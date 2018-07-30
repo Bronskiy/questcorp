@@ -1,0 +1,341 @@
+2018-07-25 22:50:19 [188.227.17.5][-][-][warning][craft\web\User::_validateUserAgentAndIp] Request didn’t meet the user agent and IP requirement for maintaining a user session.
+2018-07-25 22:50:19 [188.227.17.5][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TMP' => '/srv/users/serverpilot/tmp/questcorp'
+    'TEMP' => '/srv/users/serverpilot/tmp/questcorp'
+    'TMPDIR' => '/srv/users/serverpilot/tmp/questcorp'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'USER' => 'serverpilot'
+    'HOME' => '/srv/users/serverpilot'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.0'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REMOTE_PORT' => '22838'
+    'SCRIPT_FILENAME' => '/srv/users/serverpilot/apps/questcorp/public/index.php'
+    'SERVER_ADMIN' => 'webmaster@'
+    'CONTEXT_DOCUMENT_ROOT' => '/srv/users/serverpilot/apps/questcorp/public'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'https'
+    'DOCUMENT_ROOT' => '/srv/users/serverpilot/apps/questcorp/public'
+    'REMOTE_ADDR' => '188.227.17.5'
+    'SERVER_PORT' => '443'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'questcorp.events'
+    'SERVER_SOFTWARE' => 'Apache/2.4.33 (Unix) OpenSSL/1.0.2g'
+    'SERVER_SIGNATURE' => ''
+    'LD_LIBRARY_PATH' => '/opt/sp/apache/lib:/opt/sp/apache/lib'
+    'HTTP_CF_CONNECTING_IP' => '188.227.17.5'
+    'HTTP_CF_VISITOR' => '{\"scheme\":\"https\"}'
+    'HTTP_CF_RAY' => '440127a2fe0c4e5a-DME'
+    'HTTP_CF_IPCOUNTRY' => 'RU'
+    'HTTP_ACCEPT_ENCODING' => 'gzip'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_X_FORWARDED_PROTO' => 'https'
+    'HTTP_X_FORWARDED_SSL' => 'on'
+    'HTTP_X_FORWARDED_FOR' => '188.227.17.5, 188.227.17.5'
+    'HTTP_HOST' => 'questcorp.events'
+    'SCRIPT_URI' => 'https://questcorp.events/'
+    'SCRIPT_URL' => '/'
+    'HTTPS' => 'on'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1532548219.4906
+    'REQUEST_TIME' => 1532548219
+    'argv' => []
+    'argc' => 0
+]
+2018-07-26 02:43:58 [91.215.33.142][-][-][warning][craft\web\User::_validateUserAgentAndIp] Request didn’t meet the user agent and IP requirement for maintaining a user session.
+2018-07-26 02:43:58 [91.215.33.142][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TMP' => '/srv/users/serverpilot/tmp/questcorp'
+    'TEMP' => '/srv/users/serverpilot/tmp/questcorp'
+    'TMPDIR' => '/srv/users/serverpilot/tmp/questcorp'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'USER' => 'serverpilot'
+    'HOME' => '/srv/users/serverpilot'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.0'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REMOTE_PORT' => '23960'
+    'SCRIPT_FILENAME' => '/srv/users/serverpilot/apps/questcorp/public/index.php'
+    'SERVER_ADMIN' => 'webmaster@'
+    'CONTEXT_DOCUMENT_ROOT' => '/srv/users/serverpilot/apps/questcorp/public'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'https'
+    'DOCUMENT_ROOT' => '/srv/users/serverpilot/apps/questcorp/public'
+    'REMOTE_ADDR' => '91.215.33.142'
+    'SERVER_PORT' => '443'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'questcorp.events'
+    'SERVER_SOFTWARE' => 'Apache/2.4.33 (Unix) OpenSSL/1.0.2g'
+    'SERVER_SIGNATURE' => ''
+    'LD_LIBRARY_PATH' => '/opt/sp/apache/lib:/opt/sp/apache/lib'
+    'HTTP_ACCEPT' => 'text/plain,text/html'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_X_FORWARDED_PROTO' => 'https'
+    'HTTP_X_FORWARDED_SSL' => 'on'
+    'HTTP_X_FORWARDED_FOR' => '91.215.33.142'
+    'HTTP_HOST' => 'questcorp.events'
+    'SCRIPT_URI' => 'https://questcorp.events/'
+    'SCRIPT_URL' => '/'
+    'HTTPS' => 'on'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1532562238.1806
+    'REQUEST_TIME' => 1532562238
+    'argv' => []
+    'argc' => 0
+]
+2018-07-27 02:55:21 [31.18.156.51][-][-][warning][craft\web\User::_validateUserAgentAndIp] Request didn’t meet the user agent and IP requirement for maintaining a user session.
+2018-07-27 02:55:21 [31.18.156.51][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TMP' => '/srv/users/serverpilot/tmp/questcorp'
+    'TEMP' => '/srv/users/serverpilot/tmp/questcorp'
+    'TMPDIR' => '/srv/users/serverpilot/tmp/questcorp'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'USER' => 'serverpilot'
+    'HOME' => '/srv/users/serverpilot'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.0'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REMOTE_PORT' => '30960'
+    'SCRIPT_FILENAME' => '/srv/users/serverpilot/apps/questcorp/public/index.php'
+    'SERVER_ADMIN' => 'webmaster@'
+    'CONTEXT_DOCUMENT_ROOT' => '/srv/users/serverpilot/apps/questcorp/public'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'https'
+    'DOCUMENT_ROOT' => '/srv/users/serverpilot/apps/questcorp/public'
+    'REMOTE_ADDR' => '31.18.156.51'
+    'SERVER_PORT' => '443'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'questcorp.events'
+    'SERVER_SOFTWARE' => 'Apache/2.4.33 (Unix) OpenSSL/1.0.2g'
+    'SERVER_SIGNATURE' => ''
+    'LD_LIBRARY_PATH' => '/opt/sp/apache/lib:/opt/sp/apache/lib'
+    'HTTP_ACCEPT' => 'text/plain,text/html'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_X_FORWARDED_PROTO' => 'https'
+    'HTTP_X_FORWARDED_SSL' => 'on'
+    'HTTP_X_FORWARDED_FOR' => '31.18.156.51'
+    'HTTP_HOST' => 'questcorp.events'
+    'SCRIPT_URI' => 'https://questcorp.events/'
+    'SCRIPT_URL' => '/'
+    'HTTPS' => 'on'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1532649321.2403
+    'REQUEST_TIME' => 1532649321
+    'argv' => []
+    'argc' => 0
+]
+2018-07-28 05:16:21 [94.114.212.64][-][-][warning][craft\web\User::_validateUserAgentAndIp] Request didn’t meet the user agent and IP requirement for maintaining a user session.
+2018-07-28 05:16:21 [94.114.212.64][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TMP' => '/srv/users/serverpilot/tmp/questcorp'
+    'TEMP' => '/srv/users/serverpilot/tmp/questcorp'
+    'TMPDIR' => '/srv/users/serverpilot/tmp/questcorp'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'USER' => 'serverpilot'
+    'HOME' => '/srv/users/serverpilot'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.0'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REMOTE_PORT' => '39014'
+    'SCRIPT_FILENAME' => '/srv/users/serverpilot/apps/questcorp/public/index.php'
+    'SERVER_ADMIN' => 'webmaster@'
+    'CONTEXT_DOCUMENT_ROOT' => '/srv/users/serverpilot/apps/questcorp/public'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'https'
+    'DOCUMENT_ROOT' => '/srv/users/serverpilot/apps/questcorp/public'
+    'REMOTE_ADDR' => '94.114.212.64'
+    'SERVER_PORT' => '443'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'questcorp.events'
+    'SERVER_SOFTWARE' => 'Apache/2.4.33 (Unix) OpenSSL/1.0.2g'
+    'SERVER_SIGNATURE' => ''
+    'LD_LIBRARY_PATH' => '/opt/sp/apache/lib:/opt/sp/apache/lib'
+    'HTTP_ACCEPT' => 'text/plain,text/html'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_X_FORWARDED_PROTO' => 'https'
+    'HTTP_X_FORWARDED_SSL' => 'on'
+    'HTTP_X_FORWARDED_FOR' => '94.114.212.64'
+    'HTTP_HOST' => 'questcorp.events'
+    'SCRIPT_URI' => 'https://questcorp.events/'
+    'SCRIPT_URL' => '/'
+    'HTTPS' => 'on'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1532744181.4348
+    'REQUEST_TIME' => 1532744181
+    'argv' => []
+    'argc' => 0
+]
+2018-07-30 04:13:58 [89.255.92.238][2353][1d05922a71f5b0815151752865437b48][error][Twig_Error_Syntax] Twig_Error_Syntax: Unexpected character "!". in /srv/users/serverpilot/apps/questcorp/craft/templates/quests/index.html:41
+Stack trace:
+#0 /srv/users/serverpilot/apps/questcorp/craft/vendor/twig/twig/lib/Twig/Lexer.php(202): Twig_Lexer->lexExpression()
+#1 /srv/users/serverpilot/apps/questcorp/craft/vendor/twig/twig/lib/Twig/Lexer.php(105): Twig_Lexer->lexVar()
+#2 /srv/users/serverpilot/apps/questcorp/craft/vendor/twig/twig/lib/Twig/Environment.php(512): Twig_Lexer->tokenize(Object(Twig_Source))
+#3 /srv/users/serverpilot/apps/questcorp/craft/vendor/twig/twig/lib/Twig/Environment.php(565): Twig_Environment->tokenize(Object(Twig_Source))
+#4 /srv/users/serverpilot/apps/questcorp/craft/vendor/craftcms/cms/src/web/twig/Environment.php(59): Twig_Environment->compileSource(Object(Twig_Source))
+#5 /srv/users/serverpilot/apps/questcorp/craft/vendor/twig/twig/lib/Twig/Environment.php(368): craft\web\twig\Environment->compileSource(Object(Twig_Source))
+#6 /srv/users/serverpilot/apps/questcorp/craft/vendor/craftcms/cms/src/web/twig/Environment.php(40): Twig_Environment->loadTemplate('quests/index', NULL)
+#7 /srv/users/serverpilot/apps/questcorp/craft/vendor/twig/twig/lib/Twig/Environment.php(289): craft\web\twig\Environment->loadTemplate('quests/index')
+#8 /srv/users/serverpilot/apps/questcorp/craft/vendor/craftcms/cms/src/web/View.php(330): Twig_Environment->render('quests/index', Array)
+#9 /srv/users/serverpilot/apps/questcorp/craft/vendor/craftcms/cms/src/web/View.php(377): craft\web\View->renderTemplate('quests/index', Array)
+#10 /srv/users/serverpilot/apps/questcorp/craft/vendor/craftcms/cms/src/web/Controller.php(155): craft\web\View->renderPageTemplate('quests/index', Array)
+#11 /srv/users/serverpilot/apps/questcorp/craft/vendor/craftcms/cms/src/controllers/TemplatesController.php(78): craft\web\Controller->renderTemplate('quests/index', Array)
+#12 [internal function]: craft\controllers\TemplatesController->actionRender('quests/index', Array)
+#13 /srv/users/serverpilot/apps/questcorp/craft/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#14 /srv/users/serverpilot/apps/questcorp/craft/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#15 /srv/users/serverpilot/apps/questcorp/craft/vendor/craftcms/cms/src/web/Controller.php(103): yii\base\Controller->runAction('render', Array)
+#16 /srv/users/serverpilot/apps/questcorp/craft/vendor/yiisoft/yii2/base/Module.php(528): craft\web\Controller->runAction('render', Array)
+#17 /srv/users/serverpilot/apps/questcorp/craft/vendor/craftcms/cms/src/web/Application.php(273): yii\base\Module->runAction('templates/rende...', Array)
+#18 /srv/users/serverpilot/apps/questcorp/craft/vendor/yiisoft/yii2/web/Application.php(103): craft\web\Application->runAction('templates/rende...', Array)
+#19 /srv/users/serverpilot/apps/questcorp/craft/vendor/craftcms/cms/src/web/Application.php(262): yii\web\Application->handleRequest(Object(craft\web\Request))
+#20 /srv/users/serverpilot/apps/questcorp/craft/vendor/yiisoft/yii2/base/Application.php(386): craft\web\Application->handleRequest(Object(craft\web\Request))
+#21 /srv/users/serverpilot/apps/questcorp/public/index.php(17): yii\base\Application->run()
+#22 {main}
+2018-07-30 04:13:58 [89.255.92.238][2353][1d05922a71f5b0815151752865437b48][info][application] $_GET = [
+    'p' => 'quests/interaktivnye-kvesty'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '__cfduid' => 'd7d716a5c4685c9a24cfbcc4c73d1a8cb1519386322'
+    '__stripe_mid' => '7463b1ea-40f2-49c7-9ea1-36f9275f1416'
+    '1031b8c41dfff97a311a7ac99863bdc5_username' => '93bac6338023c2cd4f1596130f82165db955a1fdb26a4a05340c04cd8d65e3a7a:2:{i:0;s:41:\"1031b8c41dfff97a311a7ac99863bdc5_username\";i:1;s:8:\"bronskiy\";}'
+    'geoCookie' => 'cb3928330503068d04b71d13e73737207dfc13cb05c4d155b36352d20dc51ec2a:2:{i:0;s:9:\"geoCookie\";i:1;O:8:\"stdClass\":16:{s:10:\"ip_address\";s:11:\"89.255.92.0\";s:7:\"country\";s:12:\"Россия\";s:12:\"country_code\";s:2:\"RU\";s:9:\"continent\";s:12:\"Европа\";s:14:\"continent_code\";s:2:\"EU\";s:4:\"city\";s:12:\"Москва\";s:6:\"county\";N;s:6:\"region\";s:12:\"Москва\";s:11:\"region_code\";s:2:\"48\";s:8:\"timezone\";s:13:\"Europe/Moscow\";s:5:\"owner\";N;s:9:\"longitude\";d:37.6156;s:8:\"latitude\";d:55.7522;s:8:\"currency\";s:3:\"RUB\";s:9:\"languages\";a:24:{i:0;s:2:\"ru\";i:1;s:2:\"tt\";i:2;s:3:\"xal\";i:3;s:3:\"cau\";i:4;s:3:\"ady\";i:5;s:2:\"kv\";i:6;s:2:\"ce\";i:7;s:3:\"tyv\";i:8;s:2:\"cv\";i:9;s:3:\"udm\";i:10;s:3:\"tut\";i:11;s:3:\"mns\";i:12;s:3:\"bua\";i:13;s:3:\"myv\";i:14;s:3:\"mdf\";i:15;s:3:\"chm\";i:16;s:2:\"ba\";i:17;s:3:\"inh\";i:18;s:3:\"tut\";i:19;s:3:\"kbd\";i:20;s:3:\"krc\";i:21;s:3:\"ava\";i:22;s:3:\"sah\";i:23;s:3:\"nog\";}s:6:\"cached\";b:0;}}'
+    'vashGorod' => 'Москва'
+    '_ym_uid' => '1531739229870365263'
+    '_ym_d' => '1531739229'
+    '_ga' => 'GA1.2.807404791.1531739229'
+    'geoConfirmed' => 'true'
+    'CraftSessionId' => '1d05922a71f5b0815151752865437b48'
+    '1031b8c41dfff97a311a7ac99863bdc5_identity' => '9c7be8d8cba1cb68b8a1fe2fc24213c7886d9657341ee452881daee6f70323b1a:2:{i:0;s:41:\"1031b8c41dfff97a311a7ac99863bdc5_identity\";i:1;s:291:\"[\"2353\",\"[\\\"2AYNLU7B_M-MpjGqR3LbMT73GXRXItbZjMX9qjRmlSAMxd0jhzjPoDOXOJenWBPri12FgKjR7d87uncjksa9wWLn7Y0bJyZBKwHb\\\",\\\"9576f324-d191-4a10-8485-2da91e27d5ff\\\",\\\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36\\\"]\",1209600]\";}'
+    'CRAFT_CSRF_TOKEN' => '••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••'
+    '_gid' => 'GA1.2.1090004735.1532912528'
+    '_ym_visorc_49637002' => 'w'
+    '_ym_isad' => '2'
+    '_gat_gtag_UA_69257327_3' => '1'
+    '__atuvc' => '2|27,0|28,10|29,2|30,7|31'
+    '__atuvs' => '5b5e638fb976259d006'
+]
+
+$_SESSION = [
+    'bd62416aa8538ede709019a5e113eea5__flash' => []
+    '1031b8c41dfff97a311a7ac99863bdc5__id' => '2353'
+    '1031b8c41dfff97a311a7ac99863bdc5__expire' => 1532999638
+    'bd62416aa8538ede709019a5e113eea5__auth_access' => [
+        0 => 'editStructure:4'
+        1 => 'saveAssetInVolume:2'
+        2 => 'saveAssetInVolume:7'
+    ]
+]
+
+$_SERVER = [
+    'TMP' => '/srv/users/serverpilot/tmp/questcorp'
+    'TEMP' => '/srv/users/serverpilot/tmp/questcorp'
+    'TMPDIR' => '/srv/users/serverpilot/tmp/questcorp'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'USER' => 'serverpilot'
+    'HOME' => '/srv/users/serverpilot'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/quests/interaktivnye-kvesty'
+    'QUERY_STRING' => 'p=quests/interaktivnye-kvesty'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.0'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_QUERY_STRING' => 'p=quests/interaktivnye-kvesty'
+    'REDIRECT_URL' => '/quests/interaktivnye-kvesty'
+    'REMOTE_PORT' => '51856'
+    'SCRIPT_FILENAME' => '/srv/users/serverpilot/apps/questcorp/public/index.php'
+    'SERVER_ADMIN' => 'webmaster@'
+    'CONTEXT_DOCUMENT_ROOT' => '/srv/users/serverpilot/apps/questcorp/public'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'https'
+    'DOCUMENT_ROOT' => '/srv/users/serverpilot/apps/questcorp/public'
+    'REMOTE_ADDR' => '89.255.92.238'
+    'SERVER_PORT' => '443'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'questcorp.events'
+    'SERVER_SOFTWARE' => 'Apache/2.4.33 (Unix) OpenSSL/1.0.2g'
+    'SERVER_SIGNATURE' => ''
+    'LD_LIBRARY_PATH' => '/opt/sp/apache/lib:/opt/sp/apache/lib'
+    'HTTP_CF_CONNECTING_IP' => '89.255.92.238'
+    'HTTP_COOKIE' => '__cfduid=d7d716a5c4685c9a24cfbcc4c73d1a8cb1519386322; __stripe_mid=7463b1ea-40f2-49c7-9ea1-36f9275f1416; 1031b8c41dfff97a311a7ac99863bdc5_username=93bac6338023c2cd4f1596130f82165db955a1fdb26a4a05340c04cd8d65e3a7a%3A2%3A%7Bi%3A0%3Bs%3A41%3A%221031b8c41dfff97a311a7ac99863bdc5_username%22%3Bi%3A1%3Bs%3A8%3A%22bronskiy%22%3B%7D; geoCookie=cb3928330503068d04b71d13e73737207dfc13cb05c4d155b36352d20dc51ec2a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22geoCookie%22%3Bi%3A1%3BO%3A8%3A%22stdClass%22%3A16%3A%7Bs%3A10%3A%22ip_address%22%3Bs%3A11%3A%2289.255.92.0%22%3Bs%3A7%3A%22country%22%3Bs%3A12%3A%22%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F%22%3Bs%3A12%3A%22country_code%22%3Bs%3A2%3A%22RU%22%3Bs%3A9%3A%22continent%22%3Bs%3A12%3A%22%D0%95%D0%B2%D1%80%D0%BE%D0%BF%D0%B0%22%3Bs%3A14%3A%22continent_code%22%3Bs%3A2%3A%22EU%22%3Bs%3A4%3A%22city%22%3Bs%3A12%3A%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%3Bs%3A6%3A%22county%22%3BN%3Bs%3A6%3A%22region%22%3Bs%3A12%3A%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%3Bs%3A11%3A%22region_code%22%3Bs%3A2%3A%2248%22%3Bs%3A8%3A%22timezone%22%3Bs%3A13%3A%22Europe%2FMoscow%22%3Bs%3A5%3A%22owner%22%3BN%3Bs%3A9%3A%22longitude%22%3Bd%3A37.6156%3Bs%3A8%3A%22latitude%22%3Bd%3A55.7522%3Bs%3A8%3A%22currency%22%3Bs%3A3%3A%22RUB%22%3Bs%3A9%3A%22languages%22%3Ba%3A24%3A%7Bi%3A0%3Bs%3A2%3A%22ru%22%3Bi%3A1%3Bs%3A2%3A%22tt%22%3Bi%3A2%3Bs%3A3%3A%22xal%22%3Bi%3A3%3Bs%3A3%3A%22cau%22%3Bi%3A4%3Bs%3A3%3A%22ady%22%3Bi%3A5%3Bs%3A2%3A%22kv%22%3Bi%3A6%3Bs%3A2%3A%22ce%22%3Bi%3A7%3Bs%3A3%3A%22tyv%22%3Bi%3A8%3Bs%3A2%3A%22cv%22%3Bi%3A9%3Bs%3A3%3A%22udm%22%3Bi%3A10%3Bs%3A3%3A%22tut%22%3Bi%3A11%3Bs%3A3%3A%22mns%22%3Bi%3A12%3Bs%3A3%3A%22bua%22%3Bi%3A13%3Bs%3A3%3A%22myv%22%3Bi%3A14%3Bs%3A3%3A%22mdf%22%3Bi%3A15%3Bs%3A3%3A%22chm%22%3Bi%3A16%3Bs%3A2%3A%22ba%22%3Bi%3A17%3Bs%3A3%3A%22inh%22%3Bi%3A18%3Bs%3A3%3A%22tut%22%3Bi%3A19%3Bs%3A3%3A%22kbd%22%3Bi%3A20%3Bs%3A3%3A%22krc%22%3Bi%3A21%3Bs%3A3%3A%22ava%22%3Bi%3A22%3Bs%3A3%3A%22sah%22%3Bi%3A23%3Bs%3A3%3A%22nog%22%3B%7Ds%3A6%3A%22cached%22%3Bb%3A0%3B%7D%7D; vashGorod=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0; _ym_uid=1531739229870365263; _ym_d=1531739229; _ga=GA1.2.807404791.1531739229; geoConfirmed=true; CraftSessionId=1d05922a71f5b0815151752865437b48; 1031b8c41dfff97a311a7ac99863bdc5_identity=9c7be8d8cba1cb68b8a1fe2fc24213c7886d9657341ee452881daee6f70323b1a%3A2%3A%7Bi%3A0%3Bs%3A41%3A%221031b8c41dfff97a311a7ac99863bdc5_identity%22%3Bi%3A1%3Bs%3A291%3A%22%5B%222353%22%2C%22%5B%5C%222AYNLU7B_M-MpjGqR3LbMT73GXRXItbZjMX9qjRmlSAMxd0jhzjPoDOXOJenWBPri12FgKjR7d87uncjksa9wWLn7Y0bJyZBKwHb%5C%22%2C%5C%229576f324-d191-4a10-8485-2da91e27d5ff%5C%22%2C%5C%22Mozilla%2F5.0+%28Macintosh%3B+Intel+Mac+OS+X+10_13_6%29+AppleWebKit%2F537.36+%28KHTML%2C+like+Gecko%29+Chrome%2F67.0.3396.99+Safari%2F537.36%5C%22%5D%22%2C1209600%5D%22%3B%7D; CRAFT_CSRF_TOKEN=63f4083af1aa2a92acb67fd530aa9d1884dda2e3095ec168c7b921f4ad2dc151a%3A2%3A%7Bi%3A0%3Bs%3A16%3A%22CRAFT_CSRF_TOKEN%22%3Bi%3A1%3Bs%3A211%3A%22IF8eHWNDTHtu2Qd3ribSEQjQArc5-Y-fIAIc62Ko%7C716aed86c632bd693b7f92d2ceb499b6222988eaef309e12ed21c3b4a6e8653bIF8eHWNDTHtu2Qd3ribSEQjQArc5-Y-fIAIc62Ko%7C2353%7C%242y%2413%24X5JeSw0rNMArasCKwzYIb.Z.4QanS.7PbUVytYJAeI5KFE4axYGwe%22%3B%7D; _gid=GA1.2.1090004735.1532912528; _ym_visorc_49637002=w; _ym_isad=2; _gat_gtag_UA_69257327_3=1; __atuvc=2%7C27%2C0%7C28%2C10%7C29%2C2%7C30%2C7%7C31; __atuvs=5b5e638fb976259d006'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,ru;q=0.8,la;q=0.7'
+    'HTTP_REFERER' => 'https://questcorp.events/quests'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36'
+    'HTTP_DNT' => '1'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CF_VISITOR' => '{\"scheme\":\"https\"}'
+    'HTTP_CF_RAY' => '4423f73d5fcb8fff-DME'
+    'HTTP_CF_IPCOUNTRY' => 'RU'
+    'HTTP_ACCEPT_ENCODING' => 'gzip'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_X_FORWARDED_PROTO' => 'https'
+    'HTTP_X_FORWARDED_SSL' => 'on'
+    'HTTP_X_FORWARDED_FOR' => '89.255.92.238, 89.255.92.238'
+    'HTTP_HOST' => 'questcorp.events'
+    'SCRIPT_URI' => 'https://questcorp.events/quests/interaktivnye-kvesty'
+    'SCRIPT_URL' => '/quests/interaktivnye-kvesty'
+    'HTTPS' => 'on'
+    'REDIRECT_STATUS' => '200'
+    'REDIRECT_SCRIPT_URI' => 'https://questcorp.events/quests/interaktivnye-kvesty'
+    'REDIRECT_SCRIPT_URL' => '/quests/interaktivnye-kvesty'
+    'REDIRECT_HTTPS' => 'on'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1532913238.6361
+    'REQUEST_TIME' => 1532913238
+    'argv' => [
+        0 => 'p=quests/interaktivnye-kvesty'
+    ]
+    'argc' => 1
+]

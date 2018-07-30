@@ -1,0 +1,45 @@
+<div id="testimonials" class="container section fp-auto-height p-auto-height-responsive">
+  <div class=" row   margin-lg-80t margin-lg-40b margin-sm-40t margin-sm-10b margin-xs-30t padding-md-5t">
+    <div class=" col-sm-12  margin-lg-45b margin-sm-35b ">
+      <div class="headlines-wrap ">
+        <div class="subtitle">Отзывы
+          <div class="separator default">
+          </div>
+        </div>
+        <h2 class="title">Нас рекомендуют</h2>
+      </div>
+    </div>
+    <div class=" col-sm-12 ">
+      <div class="wpb_wrapper">
+        <div class="testimonial-wrapper  ">
+          <div class="swiper-container     swiper-container-horizontal swiper-container-autoheight" data-mode="horizontal" data-autoplay="4000" data-slides-per-view="3" data-loop="true" data-space-between="30" data-speed="1500" data-lg-slides="3,50" data-md-slides="2,30" data-sm-slides="1,10">
+            <div class="swiper-wrapper">
+              {% set reviewStep = 1 %}
+              {% for block in entry.reviews.all() %}
+              <div class="swiper-slide" data-swiper-slide-index="{{ reviewStep }}">
+                {% set image = block.reviewPhoto.one() %}
+                {% if image %}
+                <div class="img-wrap">
+                  <img src="{{ image.getUrl('review367x358') }}" alt="{{ image.title }}" class="image image-equal">
+                </div>
+                {% endif %}
+
+                <div class="content">
+                  <div class="description">{{ block.reviewBody }}</div>
+                  <div class="info ">
+                    <span class="author">{{ block.reviewClient }}</span>
+                    {# <span class="date">{{ block.reviewDate }}</span> #}
+                  </div>
+                </div>
+              </div>
+              {% set reviewStep = reviewStep + 1 %}
+              {% endfor %}
+
+            </div>
+            <div class="swiper-pagination pagination-swiper-unique-id-1 swiper-pagination-clickable swiper-pagination-bullets"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

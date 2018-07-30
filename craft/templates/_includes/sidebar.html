@@ -1,0 +1,37 @@
+<div class="page-sidebar col-md-4">
+  <div class="swin-widget widget-recent-post">
+    <div class="title-widget">Новые статьи</div>
+    <div class="widget-body widget-content clearfix">
+      {% for entry in craft.entries.section('news').limit(3).find() %}
+      <div class="swin-media">
+        {% set image = entry.newsImage.first() %}
+        {% if image %}
+        <div class="content-left">
+          <a href="{{ entry.url }}"><img src="{{ image.getUrl('thumb160x100') }}" alt="{{ entry.title }}" class="media-object"></a>
+        </div>
+        {% endif %}
+        <div class="content-right">
+          <a href="{{ entry.url }}" class="heading">{{ entry.title }}</a>
+          <div class="info">
+            <div><i class="swin-icon fa fa-clock-o"></i><span class="text">{{ entry.postDate|date('d F, Y') }}</span></div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="swin-widget widget-tag">
+    <div class="title-widget">Тэги</div>
+    <div class="widget-body widget-content clearfix">
+      <ul class="list-unstyled list-inline">
+        {% set tags = craft.tags.find() %}
+        {% for tag in tags %}
+        {% set count = craft.entries.section('news').relatedTo(tag).total() %}
+        {% if count != 0 %}
+        <li><a href="{{ url('news/tags/'~tag.slug) }}" title="Количество статей: {{ count }}" class="tag">{{ tag.name }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>

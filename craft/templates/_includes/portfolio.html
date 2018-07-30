@@ -1,0 +1,82 @@
+<div id="blog-home" class="container section fp-auto-height p-auto-height-responsive">
+  <div class=" row  margin-lg-40t margin-lg-40b margin-sm-40t margin-sm-10b margin-xs-30t">
+    <div class=" col-sm-12 ">
+      <div class="headlines-wrap  margin-lg-60b margin-md-45b ">
+        <div class="subtitle">Визуализация<div class="separator default"></div></div>
+        <h2 class="title">Проведенные проекты</h2>
+      </div>
+      <div class="container">
+        <div class="posts-list row">
+          {% for entry in craft.entries.section('portfolio').all() if entry.portfolioFavorite.contains('naGlavnoyStranitse') %}
+          <div class="col-xs-12 col-sm-6 col-md-4 post-item-isotope ">
+            <div class="post-item grid3 s-back-switch">
+              {% set image = entry.portfolioImage.one() %}
+              {% if image %}
+              <img src="{{ image.getUrl('izobrazhenie370x375') }}" alt="{{ entry.title }}" class="s-img-switch">
+              {% else %}
+              <img src="https://via.placeholder.com/370x375" alt="{{ entry.title }}" class="s-img-switch">
+              {% endif %}
+              <div class="content">
+                <i class="corner-1"></i>
+                <i class="corner-2"></i>
+                <i class="corner-3"></i>
+                <i class="corner-4"></i>
+                <div class="a-table"></div>
+                {% for block in entry.portfolioClient.all() %}
+                {% if block.clientLogo %}
+                {% set image = block.clientLogo.one() %}
+                <div class="top-content">
+                  <img src="{{ image.getUrl('logo200px') }}">
+                </div>
+                {% endif %}
+                {% endfor %}
+                <div class="bottom-content">
+                  <h3 class="post-title">{{ entry.title }}</h3>
+                  <a href="{{ entry.url }}" class="a-btn">Подробнее</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          <div class="col-xs-12 col-sm-6 col-md-4 post-item-isotope ">
+            <div class="post-item more grid3 s-back-switch">
+              <img src="https://questcorp.events/assets/temp_img/31560331659353.jpg" alt class="s-img-switch">
+              <a href="/scripts" class="content">
+                <span class="vertical">
+                  <span class="arrow"></span>
+                  <span class="text">Все проекты </span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{#
+<div id="gallery" class="container section fp-auto-height p-auto-height-responsive">
+  <div class="row margin-lg-80t margin-lg-40b margin-sm-40t margin-sm-10b margin-xs-30t">
+    <div class="col-sm-12">
+      <div class="headlines-wrap margin-lg-60b margin-md-45b">
+        <div class="subtitle">Визуализация<div class="separator default"></div></div>
+        <h2 class="title">Проведенные проекты</h2>
+        <p>{{ entry.visualizationBody }}</p>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="grid">
+            {% for image in entry.photos.all() %}
+            <div class="grid-item">
+              <a href="{{ image.getUrl() }}" data-fancybox="{{ entry.id }}">
+                <img src="{{ image.getUrl('image370x275') }}" >
+              </a>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+#}

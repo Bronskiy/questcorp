@@ -1,0 +1,92 @@
+{% extends "_layout" %}
+
+{% if tag is defined %}
+
+{% set tag = craft.tags.slug(tag).one() %}
+{% set title = tag.title %}
+
+{% set entriesToShow = craft.entries.section('questpedia').relatedTo(tag) %}
+
+{% elseif category is defined %}
+
+{% set title = category.title %}
+{% set entriesToShow = craft.entries.relatedTo(category) %}
+
+{% else %}
+{% set title = "Квестопедия" %}
+
+{% set entriesToShow = craft.entries.section('questpedia') %}
+
+{% endif %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="headlines-wrap blog-title-wrap margin-lg-125t margin-lg-50b">
+        <div class="subtitle">Сборник тематических статей и полезной информации
+          <div class="separator"></div>
+        </div>
+        {% if tag is defined %}
+        <h2 class="title">Статьи c тэгом "{{ tag.title }}"</h2>
+        {% else %}
+        <h2 class="title">Всё о живых квестах и квестах в реальности</h2>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="blog-index row">
+        {% for entry in entriesToShow.all() %}
+        <div class="blog-post-wrap col-xs-12 col-sm-6 col-md-6">
+          <div class="blog-post post-394 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+            <span class="corner-1"></span>
+            <span class="corner-2"></span>
+            <span class="corner-3"></span>
+            <span class="corner-4"></span>
+            <div class="img-wrap s-back-switch">
+              {% set image = entry.questpediaImage.one() %}
+              {% if image %}
+              <img src="{{ image.getUrl('izobrazhenie515X210') }}" alt="{{ entry.title }}" class="s-img-switch">
+              {% endif %}
+            </div>
+            <h5 class="post-title">
+              <a href="{{ entry.url }}">{{ entry.title }}</a>
+            </h5>
+            <div class="post-excerpt">
+              <p>{{ entry.questpediaShort }}</p>
+              <a href="{{ entry.url }}" class="swin-transition">Подробнее <i class="fa fa-angle-double-right"></i></a>
+            </div>
+            {% if entry.questpediaTags|length %}
+            <div class="post-tags">
+              {% for tag in entry.questpediaTags.all() %}
+              <a href="{{ url('questpedia/tags/'~tag.slug) }}">#{{ tag.title }}</a>
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{#
+  {% paginate entriesToShow.limit(4) as pageInfo, pageEntries %}
+  <div class="pagination-wrapper">
+    <nav aria-label="Page navigation">
+      <ul class="pagination">
+        {% if pageInfo.prevUrl %}<li><a href="{{ pageInfo.prevUrl }}" aria-label="Previous"><span aria-hidden="true">«</span></a></li>{% endif %}
+        <li class="current"><a>{{ pageInfo.currentPage }}</a></li>
+        {% for page, url in pageInfo.getNextUrls(5) %}
+        <li><a href="{{ url }}">{{ page }}</a></li>
+        {% endfor %}
+        {% if pageInfo.nextUrl %}<li><a href="{{ pageInfo.nextUrl }}" aria-label="Next"><span aria-hidden="true">»</span></a></li>{% endif %}
+      </ul>
+    </nav>
+  </div>
+  #}
+
+  {% endblock %}

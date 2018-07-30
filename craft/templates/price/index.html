@@ -1,0 +1,102 @@
+{% extends "_layout" %}
+{% set title = entry.title %}
+{% set description = entry.seo_description %}
+{% set keywords = entry.seo_keywords %}
+
+{% block content %}
+
+<div class="page-wrap multipage">
+  <section class="section container multipage" id="price">
+    <div class="row margin-lg-125t margin-sm-60t padding-md-60t margin-lg-25b margin-sm-40b padding-md-10b">
+      <div class="col-xs-12">
+        <div class="headlines-wrap blog-title-wrap">
+          <h2 class="title">{{ entry.title }}</h2>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="post-detailed">
+          <div class="post-content ">
+            {{ entry.priceBody }}
+            <h3>Но, мы всегда предложим вам оптимальный ценовой вариант!</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row margin-lg-40t margin-sm-40t padding-md-10t margin-lg-125b margin-sm-40b padding-md-10b">
+      <div class="col-xs-12">
+        <div class="headlines-wrap blog-title-wrap">
+          <h2 class="title">Варианты цен</h2>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="post-detailed">
+          <div class="post-content ">
+
+            {% for block in entry.priceVar.all() %}
+            <div class="blog-post-wrap col-xs-12 col-sm-6 col-md-4">
+              <div class="blog-post post type-post status-publish format-standard has-post-thumbnail hentry ">
+                <span class="corner-1"></span>
+                <span class="corner-2"></span>
+                <span class="corner-3"></span>
+                <span class="corner-4"></span>
+
+                <h3 class="price-title">{{ block.nazvanie }}</h3>
+                <h4>{{ block.opisanie }}</h4>
+                <p class="price">{{ block.stoimost }}</p>
+                <p>{{ block.minimalnyyZakaz }}</p>
+                <div class="price-options">{{ block.optsii }}</div>
+              </div>
+            </div>
+            {% endfor %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row margin-lg-125t margin-sm-40t padding-md-10t margin-lg-25b margin-sm-40b padding-md-10b">
+      <div class="col-xs-12">
+        <div class="headlines-wrap blog-title-wrap">
+          <h2 class="title">Дополнительные услуги</h2>
+          <p>Также Вы можете по отдельности включить в смету любые услуги по Вашему желанию.</p>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="post-detailed">
+          <div class="post-content ">
+            {% for block in entry.priceExtra.all() %}
+            <div class="blog-post-wrap col-xs-12 col-sm-6 col-md-4">
+              <div class="blog-post post type-post status-publish format-standard has-post-thumbnail hentry ">
+                <span class="corner-1"></span>
+                <span class="corner-2"></span>
+                <span class="corner-3"></span>
+                <span class="corner-4"></span>
+                <div class="price-extra-head">
+                  <h4 class="option-title">{{ block.nazvanie }}</h4>
+                  <p class="price">{{ block.stoimost }}</p>
+                </div>
+
+                {% set image = block.izobrazhenie.one() %}
+                {% if image %}
+                <div class="img-wrap price-extra-img-wrap s-back-switch">
+                  <img src="{{ image.getUrl('izobrazhenie310X210') }}" alt class="s-img-switch">
+                </div>
+                {% endif %}
+              </div>
+            </div>
+            {% if loop.index is divisible by(3) %}
+            <div class="clearfix visible-md-block visible-lg-block"></div>
+            {% endif %}
+            {% if loop.index is even %}
+            <div class="clearfix visible-sm-block"></div>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% include "_includes/call-to-action" with { call_title: 'Хотите узнать больше о наших услугах?
+  Закажите консультацию специалиста!
+  Это бесплатно!' } %}
+</div>
+{% endblock %}

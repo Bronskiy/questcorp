@@ -1,0 +1,88 @@
+{% extends "_layout" %}
+{% set title = entry.title %}
+{% set description = entry.seo_description %}
+{% set keywords = entry.seo_keywords %}
+{% set allRelatedEntries = craft.entries.relatedTo(entry.blogTags).id('not ' ~ entry.id) %}
+
+{% block content %}
+<div class="post-img-wrap single-post overlay  ">
+  {% set image = entry.blogImage.one() %}
+  {% if image %}
+  <img src="{{ image.getUrl() }}" class="s-img-switch wp-post-image" alt>
+  {% endif %}
+  <div class="content ">
+    <div class="container">
+      <div class="row margin-lg-40b margin-sm-40b padding-md-10b">
+        <div class="col-xs-12">
+          <h4 class="post-title">{{ entry.title }}</h4>
+          <div class="post-info">
+            <div class="post-date"><i class="fa fa-calendar" aria-hidden="true"></i>{{ entry.postDate|date('d F, Y') }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container single-post">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="post-detailed">
+        <div class="post-content ">
+          {{ entry.blogBody }}
+        </div>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <div class="addthis_inline_share_toolbox"></div>
+        <div class="post-tags">
+          {% for tag in entry.blogTags.all %}
+          <a href="{{ url('blog/tags/'~tag.slug) }}">#{{ tag.title }}</a>
+          {% endfor %}
+        </div>
+      </div>
+
+      {% if allRelatedEntries|length %}
+      <div class="similar-posts">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="headlines-wrap blog-title-wrap">
+              <div class="subtitle">Вас также могут заинтересовать
+                <div class="separator"></div>
+              </div>
+              <h2 class="title">Похожие публикации</h2>
+            </div>
+          </div>
+
+
+          {% for relatedEntry in allRelatedEntries.all() %}
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="blog-post post-394 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+              <span class="corner-1"></span>
+              <span class="corner-2"></span>
+              <span class="corner-3"></span>
+              <span class="corner-4"></span>
+              <div class="img-wrap ">
+                {% set image = relatedEntry.blogImage.one() %}
+                {% if image %}
+                <img src="{{ image.getUrl() }}" alt="{{ entry.title }}" class="s-img-switch">
+                {% endif %}
+              </div>
+              <div class="post-info">
+                <div class="post-date"><span class="icon-calendar"></span>{{ entry.postDate|date('d F, Y') }}</div>
+              </div>
+              <h5 class="s-post-title">
+                <a href="{{ relatedEntry.url }}">{{ relatedEntry.title }}</a>
+              </h5>
+              <div class="post-excerpt">
+              {{ relatedEntry.blogBody|striptags|slice(0, 300) ~ '...' }}
+              <a href="{{ entry.url }}" class="swin-transition">Подробнее <i class="fa fa-angle-double-right"></i></a>
+            </div>
+            </div>
+          </div>
+          {% endfor %}
+
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

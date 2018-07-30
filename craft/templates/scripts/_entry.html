@@ -1,0 +1,466 @@
+{% extends "_layout" %}
+{% set title = entry.title %}
+{% set description = entry.seo_description %}
+{% set keywords = entry.seo_keywords %}
+{% set allRelatedEntries = craft.entries.relatedTo(entry.scriptTags).id('not ' ~ entry.id) %}
+
+{% block content %}
+
+<section class="single-quest-item single-script-item">
+  <div class="swiper-container gallery-top swiper-container-horizontal swiper-unique-id-0 initialized swiper-container-autoheight  ">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide bottom_overlay ">
+        {% set image = entry.scriptImage.one() %}
+        {% if image %}
+        <img src="{{ image.getUrl() }}" alt class="s-img-switch">
+        {% else %}
+        <img src="https://via.placeholder.com/2000x1000" alt class="s-img-switch">
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+  <div class="container over-content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="title-wrap  ">
+          <h1 class="main-title">{{ entry.title }}</h1>
+        </div>
+        <div class="info-item-wrap">
+          <div class="info-item  ">
+            <i class="fa fa-users" aria-hidden="true"></i>
+            <p class="info-item-title">{{ entry.scriptQty }}</p>
+          </div>
+          <div class="info-item  ">
+            <i class="fa fa-hourglass" aria-hidden="true"></i>
+            <p class="info-item-title">{{ entry.scriptTime }}</p>
+          </div>
+          {% set categories = entry.scriptCategories %}
+          {% if categories | length %}
+
+          <div class="info-item  ">
+            <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
+            <p class="info-item-title">
+              {% nav category in categories.all() %}
+              <a href="{{ category.url }}">{{ category }}</a>{% if loop.last %}
+              {% else %},
+              {% endif %}
+              {% endnav %}
+            </p>
+          </div>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="single-quest-section">
+    <div class="quest-section">
+      <div class="container">
+        <div class="row margin-lg-60t margin-sm-35t">
+          <div class="col-xs-12 col-sm-6 col-md-6 equal-h">
+            <div class="content">
+              <h3>Про что этот квест?</h3>
+              {{ entry.scriptProps }}
+            </div>
+          </div>
+          {#
+            <div class="col-xs-12 col-sm-6 col-md-6 equal-h">
+              <div class="content">
+                <h3>Легенда квеста</h3>
+                {{ entry.scriptLegend }}
+              </div>
+            </div>
+            #}
+            <div class="col-xs-12 col-sm-6 col-md-6 equal-h">
+              <div class="content">
+                {% if entry.scriptsNumbers | length %}
+                <h3>Квест в цифрах</h3>
+                <ul>
+                  {% for row in entry.scriptsNumbers %}
+                  <li>{{ row.znachenie }} - {{ row.nazvanie }}</li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+          {% for block in entry.scriptsProcess.all() %}
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="headlines-wrap blog-title-wrap margin-lg-90t">
+                <h3 class="title">Как строится процесс игры</h3>
+              </div>
+            </div>
+          </div>
+          <div class=" row   margin-lg-80t margin-lg-40b margin-sm-40t margin-sm-10b margin-xs-30t">
+            {% set image = block.izobrazhenie.one() %}
+            {% if image %}
+            <div class="  col-sm-12  col-lg-6 col-md-6 col-xs-12  ">
+              <div>
+                <img src="{{ image.getUrl() }}" alt="{{ block.itemName }}" class="">
+              </div>
+            </div>
+            {% endif %}
+            <div class="  col-sm-12  col-lg-6 col-md-6 col-xs-12 ">
+              <div class="headlines-wrap  margin-lg-60b margin-md-30b margin-sm-10b margin-xs-0b ">
+                {{ block.tekst }}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+          {% for block in entry.scriptsPlace.all() %}
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="headlines-wrap blog-title-wrap margin-lg-90t">
+                <h3 class="title">Как строится процесс игры</h3>
+              </div>
+            </div>
+          </div>
+          <div class=" row   margin-lg-80t margin-lg-40b margin-sm-40t margin-sm-10b margin-xs-30t">
+            {% set image = block.izobrazhenie.one() %}
+            {% if image %}
+            <div class="  col-sm-12  col-lg-6 col-md-6 col-xs-12  ">
+              <div>
+                <img src="{{ image.getUrl() }}" alt="{{ block.itemName }}" class="">
+              </div>
+            </div>
+            {% endif %}
+            <div class="  col-sm-12  col-lg-6 col-md-6 col-xs-12 ">
+              <div class="headlines-wrap  margin-lg-60b margin-md-30b margin-sm-10b margin-xs-0b ">
+                {{ block.tekst }}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+          {#
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="headlines-wrap blog-title-wrap margin-lg-90t margin-lg-50b">
+                  <div class="subtitle">Схема
+                    <div class="separator"></div>
+                  </div>
+                  <h3 class="title">Механика игры</h3>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="blog-index row">
+                  {% for block in entry.scriptMechanics.all() %}
+                  <div class="blog-post-wrap col-xs-12 col-sm-6 col-md-4">
+                    <div class="blog-post post-394 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+                      <span class="corner-1"></span>
+                      <span class="corner-2"></span>
+                      <span class="corner-3"></span>
+                      <span class="corner-4"></span>
+                      <div class="img-wrap s-back-switch">
+                        {% set image = block.itemImage.one() %}
+                        {% if image %}
+                        <img src="{{ image.getUrl() }}" alt="{{ block.itemName }}" class="s-img-switch">
+                        {% endif %}
+                      </div>
+                      <h5 class="post-title">{{ block.itemName }}</h5>
+                      <div class="post-excerpt">
+                        <p>{{ block.itemDesc }}</p>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+            #}
+
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="headlines-wrap blog-title-wrap margin-lg-90t">
+                  <h3 class="title">Фишки игры</h3>
+                </div>
+              </div>
+            </div>
+            {% if entry.scriptFeaturesText | length %}
+            <div class="row margin-lg-20t margin-sm-20t">
+              <div class="col-xs-12">
+                <div class="content">
+                  {{ entry.scriptFeaturesText }}
+                </div>
+              </div>
+            </div>
+            {% endif %}
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="blog-index row">
+                  {% for block in entry.scriptFeatures.all() %}
+                  <div class="blog-post-wrap col-xs-12 col-sm-6 col-md-4">
+                    <div class="blog-post post-394 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+                      <span class="corner-1"></span>
+                      <span class="corner-2"></span>
+                      <span class="corner-3"></span>
+                      <span class="corner-4"></span>
+                      <div class="img-wrap s-back-switch">
+                        {% set image = block.actorImage.one() %}
+                        {% if image %}
+                        <img src="{{ image.getUrl() }}" alt="{{ block.actorName }}" class="s-img-switch">
+                        {% endif %}
+                      </div>
+                      <h5 class="post-title">{{ block.actorName }}</h5>
+                      <div class="post-excerpt">
+                        <p>{{ block.actorDesc }}</p>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+
+            {#
+              <div class="row margin-lg-125t margin-sm-40t padding-md-10t margin-lg-80b margin-sm-40b padding-md-10b">
+                <div class="col-sm-12">
+                  <div class="headlines-wrap margin-lg-40b">
+                    <h2 class="title">Примеры заданий и реквизита</h2>
+                  </div>
+                  <div class="container-fluid">
+                    <div class="posts-list posts-list-infinity row">
+
+                      {% set tools = entry.scriptItems %}
+                      {% if tools | length %}
+
+                      {% for tool in tools.all() %}
+                      <div class="col-xs-12 col-sm-6 post-item-isotope  " s>
+                        <div class="post-item grid2 ">
+                          {% set image = tool.toolsImage.one() %}
+                          {% if image %}
+                          <img src="" alt class="s-img-switch">
+                          <img src="{{ image.getUrl('izobrazhenie555X375') }}" alt="{{ tool.title }}" class="s-img-switch">
+                          {% else %}
+                          <img src="https://via.placeholder.com/555x375" alt="{{ tool.title }}" class="s-img-switch">
+                          {% endif %}
+                          <div class="content">
+                            <i class="corner-1"></i><i class="corner-2"></i><i class="corner-3"></i><i class="corner-4"></i>
+
+                            <div class="bottom-content">
+                              <h4 class="post-title">{{ tool.title }}</h4>
+                              <div class="address contact-wrap-item">
+                                <span class="contact-item">{{ tool.toolsBody }}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {% endfor %}
+
+                      {% endif %}
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              #}
+
+              {% for block in entry.scriptsInterest.all() %}
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="headlines-wrap blog-title-wrap margin-lg-90t">
+                    <h3 class="title">Как строится процесс игры</h3>
+                  </div>
+                </div>
+              </div>
+              <div class=" row   margin-lg-80t margin-lg-40b margin-sm-40t margin-sm-10b margin-xs-30t">
+                {% set image = block.izobrazhenie.one() %}
+                {% if image %}
+                <div class="  col-sm-12  col-lg-6 col-md-6 col-xs-12  ">
+                  <div>
+                    <img src="{{ image.getUrl() }}" alt="{{ block.itemName }}" class="">
+                  </div>
+                </div>
+                {% endif %}
+                <div class="  col-sm-12  col-lg-6 col-md-6 col-xs-12 ">
+                  <div class="headlines-wrap  margin-lg-60b margin-md-30b margin-sm-10b margin-xs-0b ">
+                    {{ block.tekst }}
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+
+              {% if entry.scriptPortfolioImages | length %}
+              <div class="row margin-lg-60t margin-sm-35t">
+                <div class="col-xs-12">
+                  <div class="content">
+                    <h3>Галлерея</h3>
+                    {% for asset in entry.scriptPortfolioImages.all() %}
+                    <div class="grid-item">
+                      <a href="{{ asset.url() }}" data-fancybox="{{ entry.id }}">
+                        <img src="{{ asset.url('image370x275') }}" >
+                      </a>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+
+              {% if entry.scriptPortfolioVideo | length %}
+              <div class="row margin-lg-60t margin-sm-35t margin-lg-60b margin-sm-35b">
+                <div class="col-xs-12">
+                  <div class="content">
+                    <div class="video-content">
+                      <h3>Видео</h3>
+                      {% for block in entry.scriptPortfolioVideo.all() %}
+                      {{ block.videoEmbed|raw }}
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        {#
+        <div id="testimonials" class="container section fp-auto-height p-auto-height-responsive">
+          <div class=" row   margin-lg-80t margin-lg-40b margin-sm-40t margin-sm-10b margin-xs-30t padding-md-5t">
+            <div class=" col-sm-12  margin-lg-45b margin-sm-35b ">
+              <div class="headlines-wrap ">
+                <div class="subtitle">Testimonials
+                  <div class="separator default">
+                  </div>
+                </div>
+                <h2 class="title">
+                  People admire our quests
+                </h2>
+              </div>
+            </div>
+            <div class=" col-sm-12 ">
+              <div class="wpb_wrapper">
+                <div class="testimonial-wrapper  ">
+                  <div class="swiper-container     swiper-container-horizontal swiper-container-autoheight" data-mode="horizontal" data-autoplay="4000" data-slides-per-view="3" data-loop="true" data-space-between="30" data-speed="1500" data-lg-slides="3,50" data-md-slides="2,30"
+                  data-sm-slides="1,10">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide  swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="1">
+                      <div class="img-wrap">
+                        <img src="img/3888-0.jpg" alt="" class="image image-equal">
+                      </div>
+                      <div class="content">
+                        <div class="icon-wrap yes">
+                          <img src="img/2.png" alt="" class="icon">
+                        </div>
+                        <h1 class="title ">“This is real advanture. I want try all the rooms”</h1>
+                        <div class="description ">Ut enim ad minim veniam, <span>#questroom</span> quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+                        <div class="info ">
+                          <span class="author">- Clark B., </span>
+                          <span class="date">June 11, 2016 </span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      #}
+
+      {% include "_includes/call-to-action" with { call_title: 'Получить презентации и смету' } %}
+
+      {% if allRelatedEntries|length %}
+      <div class="container">
+        <div class="row margin-lg-60t margin-sm-35t margin-lg-25b margin-sm-25b">
+          <div class="col-xs-12">
+            <div class="headlines-wrap blog-title-wrap">
+              <h3 class="title">Смотрите также</h3>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid">
+          <div class="posts-list posts-list-infinity row">
+            {% for relatedEntry in allRelatedEntries.all() %}
+
+            <div class="col-xs-12 col-sm-6 post-item-isotope  " s>
+              <div class="post-item grid2 ">
+                {% set image = relatedEntry.scriptImage.one() %}
+                {% if image %}
+                <img src="" alt class="s-img-switch">
+                <img src="{{ image.getUrl('izobrazhenie555X275') }}" alt="{{ relatedEntry.title }}" class="s-img-switch">
+                {% else %}
+                <img src="https://via.placeholder.com/555x275" alt="{{ relatedEntry.title }}" class="s-img-switch">
+                {% endif %}
+                <div class="content">
+                  <i class="corner-1"></i>
+                  <i class="corner-2"></i>
+                  <i class="corner-3"></i>
+                  <i class="corner-4"></i>
+                  <div class="a-table">
+                    <div class="info">
+                      <div class="info-item">
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                        <p class="info-item-title"></p>
+                        <p>{{ relatedEntry.scriptQty }}</p>
+                        <p></p>
+                      </div>
+                      <div class="info-item">
+                        <i class="fa fa-hourglass" aria-hidden="true"></i>
+                        <p class="info-item-title"></p>
+                        <p>{{ relatedEntry.scriptTime }}</p>
+                        <p></p>
+                      </div>
+                    </div>
+                    {% set categories = relatedEntry.scriptCategories %}
+                    {% if categories | length %}
+                    <div class="">
+                      <p class="info-item-title">
+                        <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
+                        {% nav category in categories.all() %}
+                        <a href="{{ category.url }}">{{ category }}</a>{% if loop.last %}
+                        {% else %},
+                        {% endif %}
+                        {% endnav %}</p>
+                      </div>
+                      {% endif %}
+                    </div>
+                    <div class="bottom-content">
+                      <h4 class="post-title"><a href="{{ relatedEntry.url }}">{{ relatedEntry.title }}</a></h4>
+                      <div class="address contact-wrap-item">
+                        <p class="contact-item">{{ relatedEntry.scriptShort|striptags|slice(0, 300) ~ '...' }}</p>
+                      </div>
+                      <a href="{{ relatedEntry.url }}" class="a-btn">Подробнее</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+
+        {% if entry.scriptTags | length %}
+        <div class="container">
+          <div class="row margin-lg-60t margin-sm-35t margin-lg-60b margin-sm-35b">
+            <div class="col-xs-12">
+              <div class="headlines-wrap blog-title-wrap">
+                <h3 class="title">Тэги</h3>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <div class="post-tags">
+                {% for tag in entry.scriptTags.all() %}
+                <a href="{{ url('scripts/tags/'~tag.slug) }}">#{{ tag.title }}</a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      </section>
+      {% endblock %}

@@ -1,0 +1,30 @@
+<div id="sidr">
+  <a id="mobile-menu-close" href="#"><i class="fa fa-times" aria-hidden="true"></i></a>
+  <p class="welcome-msg">
+    Ваш город: <a href="#" id="modal-action-submit" data-toggle="modal" data-target="#modal-cities"><span class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> 	{{ location.city }} | {{ craft.app.sites.currentSite.name|split(' ')|slice(1, 2)|join(' ') }}</span></a></p>
+    {# <div class="geolocation-popup">
+      <p>Ваш город 	{{ location.city }}?</p>
+      <a href="#" id="modal-action-submit" data-toggle="modal" data-target="#modal-cities"><span class="geo-change">Изменить</span></a>
+      <span class="geo-confirm">Да</span>
+    </div> #}
+  <ul>
+    <li><a href="/">Главная</a></li>
+    {% nav entry in craft.entries.section('topMenu').all() %}
+    <li><a href="{{ entry.mainMenuLink }}">{{ entry.title }}</a></li>
+    {% endnav %}
+    {% nav entry in craft.entries.section('mainMenu').all() %}
+    <li><a href="{{ entry.mainMenuLink }}">{{ entry.title }}</a></li>
+    {% endnav %}
+  </ul>
+  <div class="phone-container">
+    <div class="contact-item">
+      <a href="tel:{{ globalPhone1.textFormatted }}"><i class="fa fa-phone" aria-hidden="true"></i> {{ globalPhone1.textUnformatted }}</a>
+    </div>
+    <div class="contact-item">
+      <a href="tel:{{ globalPhone2.textFormatted }}"><i class="fa fa-phone" aria-hidden="true"></i> {{ globalPhone2.textUnformatted }}</a>
+    </div>
+  </div>
+  <div>
+    <a href="#" class="a-btn" id="modal-action-submit" data-toggle="modal" data-target="#modal-submit">Оставить заявку</a>
+  </div>
+</div>

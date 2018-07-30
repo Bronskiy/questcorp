@@ -1,0 +1,35 @@
+<div id="home" class="container-fluid  no-padding section fp-auto-height p-auto-height-responsive">
+  <div class="">
+    <div class="">
+      <div class="slider-banner">
+        <div class="swiper-container initialized swiper-container-horizontal swiper-container-autoheight" data-mode="horizontal" data-autoplay="5000" data-slides-per-view="1" data-loop="true" data-speed="2000">
+          <div class="swiper-wrapper">
+            {% for entry in craft.entries.section('slider').orderBy('sliderOrder').all() %}
+            <div class="swiper-slide" data-swiper-slide-index="{{ loop.index }}">
+              <div class="wrap s-back-switch">
+                <div class="vinnete"></div>
+                {% set slide = entry.sliderImage.one() %}
+                {% if slide %}
+                <img src="{{ slide.url('width1600px') }}" alt="{{ entry.title }}" class="s-img-switch">
+                {% endif %}
+                <div class="content container">
+                  <h2 class="title">{{ entry.title }}</h2>
+                  <div class="description">
+                    <p>{{ entry.sliderDescription }}</p>
+                  </div>
+                  {% for block in entry.sliderLink.all() %}
+                  {% if block.type == "sButton" %}
+                  <a href="{{ block.sLink }}" class="a-btn margin-lg-55t">{{ block.sName }}</a>
+                  {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="swiper-pagination"> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

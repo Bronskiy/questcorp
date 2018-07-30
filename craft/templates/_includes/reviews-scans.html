@@ -1,0 +1,22 @@
+{% set reviewEntry = craft.entries.id(2371).one() %}
+<div class="blog-index row">
+  {% for block in reviewEntry.reviewsScans.all() %}
+  <div class="blog-post-wrap review-scan-wrap col-xs-12 col-sm-6 {% if craft.request.firstSegment == '' %}col-md-3{% else %}col-md-6{% endif %}">
+    <div class="blog-post post type-post status-publish format-standard has-post-thumbnail hentry ">
+      <span class="corner-1"></span>
+      <span class="corner-2"></span>
+      <span class="corner-3"></span>
+      <span class="corner-4"></span>
+      {% set image = block.companyScan.one() %}
+      {% if image %}
+      <a href="{{ image.getUrl() }}" data-fancybox="{{ reviewEntry.id }}">
+      <div class="img-wrap s-back-switch">
+          <img src="{{ image.getUrl('width350px') }}" alt class="s-img-switch">
+      </div>
+    </a>
+      {% endif %}
+      <h5 class="post-title">{{ block.companyName }}</h5>
+    </div>
+  </div>
+  {% endfor %}
+</div>

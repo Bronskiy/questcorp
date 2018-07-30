@@ -1,0 +1,74 @@
+{% extends "_layout" %}
+{% set title = entry.title %}
+{% set description = entry.seo_description %}
+{% set keywords = entry.seo_keywords %}
+
+{% block content %}
+<div class="page-wrap multipage">
+  <section class="section container multipage" id="our-quests">
+    <div class="row margin-lg-125t margin-sm-60t padding-md-70t margin-lg-25b margin-sm-25b padding-md-10b">
+      <div class="col-xs-12">
+        <div class="headlines-wrap blog-title-wrap">
+          <h2 class="title">О компании</h2>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="post-detailed">
+          <div class="post-content ">
+            {{ entry.body }}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+
+      </div>
+      <div class="col-md-12">
+        {% if entry.aboutTeam|length %}
+        <div class="similar-posts our-team">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="headlines-wrap blog-title-wrap">
+                <div class="subtitle">Сотрудники
+                  <div class="separator"></div>
+                </div>
+                <h2 class="title">Наша команда</h2>
+              </div>
+            </div>
+
+            {% for block in entry.aboutTeam.all() %}
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <div class="blog-post post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+                <span class="corner-1"></span>
+                <span class="corner-2"></span>
+                <span class="corner-3"></span>
+                <span class="corner-4"></span>
+                <div class="img-wrap ">
+                  {% set image = block.teamPhoto.one() %}
+                  {% if image %}
+                  <img src="{{ image.getUrl('izobrazhenie320X310') }}" alt="{{ block.teamName }}" class="s-img-switch">
+                  {% endif %}
+                </div>
+
+                <h5 class="s-post-title">{{ block.teamName }}</h5>
+                <div class="post-excerpt">
+                  <p>{{ block.teamBody }}</p>
+                </div>
+              </div>
+            </div>
+
+            {% if loop.index is divisible by(2) %}
+            <div class="clearfix visible-sm-block"></div>
+            {% endif %}
+            {% if loop.index is divisible by(3) %}
+            <div class="clearfix visible-md-block"></div>
+            {% endif %}
+
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "_layout" %}
+{% set description = entry.seo_description %}
+{% set keywords = entry.seo_keywords %}
+
+{% block content %}
+{% include "_includes/slider.html" %}
+<div id="about" class="container section fp-auto-height p-auto-height-responsive">
+  <div class="row margin-lg-80t margin-lg-20b margin-sm-40t margin-sm-10b margin-xs-30t">
+    <div class="col-md-12">
+      <div class="headlines-wrap margin-lg-20b margin-md-30b margin-sm-10b margin-xs-0b ">
+        <h1 class="title">{{ entry.title }}</h1>
+        <div>{{ entry.body }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+{% include "_includes/quests-types" %}
+{% include "_includes/scripts" %}
+
+{% include "_includes/call-to-action" with { call_title: 'Оставьте заявку и получите презентацию программ' } %}
+
+{% include "_includes/portfolio" %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="headlines-wrap blog-title-wrap margin-lg-40t margin-lg-40b">
+        <div class="subtitle">Процесс работы
+          <div class="separator"></div>
+        </div>
+        <h2 class="title">Как мы работаем над вашим мероприятием</h2>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="blog-index row">
+        {% for block in entry.howWeWork.all() %}
+        <div class="blog-post-wrap how-we-work col-xs-12 col-sm-6 col-md-6">
+          <div class="blog-post post type-post status-publish format-standard has-post-thumbnail hentry ">
+            <span class="corner-1"></span>
+            <span class="corner-2"></span>
+            <span class="corner-3"></span>
+            <span class="corner-4"></span>
+            {% set image = block.itemIcon.one() %}
+            {% if image %}
+            <div class="img-wrap s-back-switch">
+              <img src="{{ image.getUrl() }}" alt class="s-img-switch">
+            </div>
+            {% endif %}
+            <h5 class="post-title">{{ block.itemDesc }}</h5>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section container multipage" id="our-quests">
+  <div class="row margin-lg-40t margin-sm-40t padding-md-40t margin-lg-40b margin-sm-40b padding-md-10b">
+
+        <div class="col-md-12">
+          <div class="headlines-wrap">
+            <div class="subtitle">Благодарности<div class="separator default"></div></div>
+            <h2 class="title">Отзывы о нас</h2>
+          </div>
+          {% include "_includes/reviews-scans" %}
+        </div>
+
+  </div>
+</section>
+
+{% include "_includes/contact-section" %}
+{% endblock %}

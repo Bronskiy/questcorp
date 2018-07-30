@@ -1,0 +1,38 @@
+<div id="modal-cities" class="modal fade">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h5 class="modal-title">Выберите город:</h5>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <script>
+          var allCities = [];
+          </script>
+          {% set sites = craft.app.sites.getAllSites() %}
+          {% set myJs %}
+          {% for site in sites %}
+          addToAllCities('{{ site.name|split(' ')|slice(1, 2)|join(' ') }}','{{ site.baseUrl }}');
+          {% endfor %}
+          {% endset %}
+          {% for site in sites %}
+
+          <li id="changeCity"><a data-page="{{ site.baseUrl }}" data-content="{{ site.name|split(' ')|slice(1, 2)|join(' ') }}">{{ site.name|split(' ')|slice(1, 2)|join(' ') }}</a></li>
+          {% endfor %}
+          {% js myJs %}
+
+          <script>
+          function addToAllCities(city, url){
+            allCities.push({"city": city, "url": url});
+          }
+          </script>
+        </ul>
+        <p>Вашего города нет в списке? Вы можете открыть бизнес с нами. <a href="/terms">Условия</a></p>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,133 @@
+{% extends "_layout" %}
+{% set title = entry.title %}
+{% set description = entry.seo_description %}
+{% set keywords = entry.seo_keywords %}
+{% set allRelatedEntries = craft.entries.relatedTo(entry.portfolioTags).id('not ' ~ entry.id) %}
+
+{% block content %}
+<div class="post-img-wrap single-post overlay  ">
+  {% set image = entry.portfolioImage.one() %}
+  {% if image %}
+  <img src="{{ image.getUrl() }}" class="s-img-switch wp-post-image" alt>
+  {% endif %}
+  <div class="content ">
+    <div class="container">
+      <div class="row margin-lg-40b margin-sm-40b padding-md-10b">
+        <div class="col-md-12">
+          <h1 class="post-title">{{ entry.title }}</h1>
+        </div>
+        <div class="col-md-6">
+          <div class="post-info">
+            <div class="post-date">
+              {% if entry.portfolioDate %}
+              <p><i class="fa fa-calendar-check-o" aria-hidden="true"></i>Дата проведения: <strong>{{ entry.portfolioDate|date('d F, Y') }}</strong></p>
+              {% endif %}
+              {% if entry.portfolioQty %}
+              <p><i class="fa fa-users" aria-hidden="true"></i>Количество гостей: <strong>{{ entry.portfolioQty }}</strong></p>
+              {% endif %}
+              {% if entry.portfolioPlace %}
+              <p><i class="fa fa-location-arrow" aria-hidden="true"></i>Площадка: <strong>{{ entry.portfolioPlace }}</strong></p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="post-info">
+            <div class="post-date client-info">
+              {% for block in entry.portfolioClient.all() %}
+              {% if block.clientName %}
+              <p>Клиент: <strong>{{ block.clientName }}</strong></p>
+              {% endif %}
+              {% if block.clientLogo %}
+              {% set image = block.clientLogo.one() %}
+              <img src="{{ image.getUrl('logo200px') }}">
+              {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container single-post">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="post-detailed">
+        <div class="post-content ">
+          {{ entry.portfolioBody }}
+        </div>
+        {% if entry.portfolioTags | length %}
+        <div class="post-tags">
+          {% for tag in entry.portfolioTags.all() %}
+          <a href="{{ url('portfolio/tags/'~tag.slug) }}">#{{ tag.title }}</a>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="headlines-wrap blog-title-wrap">
+        <h2 class="title">Галерея</h2>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="post-detailed">
+        <div class="post-content ">
+          <div class="grid">
+            {% if entry.portfolioImages | length %}
+            {% for asset in entry.portfolioImages.all() %}
+            <div class="grid-item">
+              <a href="{{ asset.url() }}" data-fancybox="{{ entry.id }}">
+                <img src="{{ asset.url('image370x275') }}" >
+              </a>
+            </div>
+            {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% if allRelatedEntries|length %}
+      <div class="similar-posts">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="headlines-wrap blog-title-wrap">
+              <div class="subtitle">Вас также заинтересуют
+                <div class="separator"></div>
+              </div>
+              <h2 class="title">Похожие мероприятия</h2>
+            </div>
+          </div>
+          {% for relatedEntry in allRelatedEntries.all() %}
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="blog-post post-394 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+              <span class="corner-1"></span>
+              <span class="corner-2"></span>
+              <span class="corner-3"></span>
+              <span class="corner-4"></span>
+              <div class="img-wrap ">
+                {% set image = relatedEntry.portfolioImage.one() %}
+                {% if image %}
+                <img src="{{ image.getUrl() }}" alt="{{ relatedEntry.title }}" class="s-img-switch">
+                {% endif %}
+              </div>
+              <div class="post-info">
+                <div class="post-date"><span class="icon-calendar"></span>{{ relatedEntry.portfolioDate|date('d F, Y') }}</div>
+              </div>
+              <h5 class="s-post-title">
+                <a href="{{ relatedEntry.url }}">{{ relatedEntry.title }}</a>
+              </h5>
+              <div class="post-excerpt">
+                {{ relatedEntry.portfolioBody|striptags|slice(0, 220) ~ '...' }}<br>
+                <a href="{{ relatedEntry.url }}" class="swin-transition">Подробнее <i class="fa fa-angle-double-right"></i></a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
