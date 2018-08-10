@@ -13,8 +13,8 @@
 
 {% if category is defined %}
 
-<section class="single-quest-item">
-  <div class="post-img-wrap single-post overlay  ">
+<section class="single-quest-item margin-lg-60b">
+  <div class="post-img-wrap single-post overlay mb-0">
     {% set image = category.questImage.one() %}
     {% if image %}
     <img src="{{ image.getUrl() }}" class="s-img-switch wp-post-image" alt>
@@ -34,64 +34,96 @@
   </div>
 
   <div class="single-quest-section">
-    <div class="quest-section">
+    <div class="request-section">
       <div class="container">
-        <div class="row margin-lg-60t margin-sm-35t">
-          <div class="col-xs-12 col-sm-6 col-md-8 ">
-          {#  <div class="quest-label">Короткое описание</div> #}
-            <div class="content">
-              <h1>Суть формата</h1>
-              {{ category.questBody }}
+        <div class="row">
+          <div class="col-md-6">
+            <div class="headlines-wrap  margin-lg-45b">
+              <h4 class="title">Получить презентацию и смету</h4>
             </div>
           </div>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="contact-info ">
-              <div class="sidebar-form">
-                <h4>Оставьте заявку и получите концепцию мероприятия бесплатно!</h4>
-                {% macro errorList(errors) %}
-                {% if errors %}
-                <div id="alert-msg-contact" class="alert-msg uk-margin-bottom">
-                  <ul class="errors">
-                    {% for error in errors %}
-                    <li>{{ error }}</li>
-                    {% endfor %}
-                  </ul>
-                </div>
-                {% endif %}
-                {% endmacro %}
+          <div class="col-md-6">
+            {% macro errorList(errors) %}
+            {% if errors %}
+            <div id="alert-msg-contact" class="alert-msg uk-margin-bottom">
+              <ul class="errors">
+                {% for error in errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% endif %}
+            {% endmacro %}
 
-                {% from _self import errorList %}
-                <form action="" method="post" class="wpcf7-form" accept-charset="UTF-8">
-                  {{ csrfInput() }}
-                  <input type="hidden" name="action" value="contact-form/send">
-                  <input type="hidden" name="redirect" value="{{ 'contact/thanks'|hash }}">
-                  <input type="hidden" name="message[Страница пользователя]" value="{{ craft.request.getUrl() }}" >
-                  <input type="hidden" name="message[Локация]" value="{{ location.city }}" >
-                  <input class="" id="from-name" type="text" name="fromName" value="{{ message.fromName ?? '' }}" placeholder="Ваше имя" required="required">
-                  {{ message is defined and message ? errorList(message.getErrors('fromName')) }}
-                  <input class="" type="text" name="message[Телефон]" placeholder="Телефон" required="required" >
-                  <input class="" type="email" name="fromEmail" placeholder="Email" value="{% if message is defined %}{{ message.fromEmail }}{% endif %}">
-                  {{ message is defined and message ? errorList(message.getErrors('fromEmail')) }}
-                  <div class="submit-wrap">
-                    <input name="submit" type="submit" id="submit" class="submit-btn a-btn" value="Оставить заявку">
+            {% from _self import errorList %}
+            <form action="" method="post" class="wpcf7-form" accept-charset="UTF-8">
+              {{ csrfInput() }}
+              <input type="hidden" name="action" value="contact-form/send">
+              <input type="hidden" name="redirect" value="{{ 'contact/thanks'|hash }}">
+              <input type="hidden" name="message[Страница пользователя]" value="{{ craft.request.getUrl() }}" >
+              <input type="hidden" name="message[Локация]" value="{{ location.city }}" >
+              <input class="" id="from-name" type="text" name="fromName" value="{{ message.fromName ?? '' }}" placeholder="Ваше имя" required="required">
+              {{ message is defined and message ? errorList(message.getErrors('fromName')) }}
+              <input class="" type="text" name="message[Телефон]" placeholder="Телефон" required="required" >
+              <input class="" type="email" name="fromEmail" placeholder="Email" value="{% if message is defined %}{{ message.fromEmail }}{% endif %}">
+              {{ message is defined and message ? errorList(message.getErrors('fromEmail')) }}
+              <div class="form-group padding-lg-15t padding-md-15t padding-sm-15t padding-md-xs">
+                <div class="row">
+                  <div class="col-md-6">
+                    <label class="control-label required-label"><input type="checkbox" required=""> Я согласен на обработку персональных данных.</label>
                   </div>
-                </form>
+                  <div class="col-md-6">
+                    <div class="submit-wrap margin-lg-45t">
+                      <input name="submit" type="submit" id="submit" class="submit-btn a-btn" value="Оставить заявку">
+                    </div>
+                  </div>
+                </div>
               </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="quest-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="headlines-wrap blog-title-wrap margin-lg-120t">
+              <h3 class="title">Суть формата</h3>
+            </div>
+          </div>
+        </div>
+        <div class="row row-eq-height margin-lg-20t margin-lg-40b margin-sm-20t margin-xs-20t">
+          <div class="col-sm-12 col-lg-6 col-md-6 col-xs-12">
+            <div>
+              {% set image = category.questBodyImage.one() %}
+              {% if image %}
+              <img src="{{ image.getUrl('izobrazhenie555X375') }}" alt="{{ category.title }}-суть-формата" class="">
+              {% else %}
+              <img src="https://via.placeholder.com/555x375" alt="{{ category.title }}" class="">
+              {% endif %}
+            </div>
+          </div>
+          <div class="col-sm-12 col-lg-6 col-md-6 col-xs-12">
+            <div class="headlines-wrap  margin-lg-60b margin-md-30b margin-sm-10b margin-xs-0b ">
+              {{ category.questBody }}
             </div>
           </div>
         </div>
 
         {% if category.questScripts | length %}
-        <div class="row margin-sm-40t padding-md-10t  margin-sm-40b padding-md-10b">
+        <div class="row margin-lg-120t padding-md-10t padding-md-10b">
           <div class="col-sm-12">
             <div class="headlines-wrap margin-lg-40b">
               <h2 class="title">Сценарии</h2>
             </div>
+            </div>
+            <div class="col-sm-12">
             <div class="container-fluid">
               <div class="posts-list posts-list-infinity row">
 
                 {% for entry in category.questScripts.all() %}
-                <div class="col-xs-12 col-sm-6 post-item-isotope  " s>
+                <div class="col-xs-12 col-sm-6 post-item-isotope">
                   <div class="post-item grid2 ">
                     {% set image = entry.scriptImage.one() %}
                     {% if image %}
@@ -155,16 +187,16 @@
         {% endif %}
 
         {% if category.questStages | length %}
-        <div class="row margin-sm-40t padding-md-10t margin-sm-40b padding-md-10b">
+        <div class="row margin-lg-95t padding-md-10t padding-md-10b">
           <div class="col-sm-12">
             <div class="headlines-wrap margin-lg-40b">
-              <h2 class="title">Этапы организации и проведения</h2>
+              <h2 class="title">Этапы организации и проведения квестов!</h2>
             </div>
             <div class="container-fluid">
               <div class="posts-list stage-list posts-list-infinity row">
 
                 {% for block in category.questStages.all() %}
-                <div class="col-xs-12 col-sm-6 post-item-isotope  " s>
+                <div class="col-xs-12 col-sm-6 post-item-isotope">
                   <div class="post-item grid2 ">
 
                     <div class="content">
@@ -172,10 +204,17 @@
                       <i class="corner-2"></i>
                       <i class="corner-3"></i>
                       <i class="corner-4"></i>
-
-                      <div class="bottom-content">
+                      <div class="top-content">
                         <h4 class="post-title">{{ block.stageName }}</h4>
-                        {{ block.stageBody }}
+                      </div>
+                      <div class="img-wrap s-back-switch">
+                        {% set image = block.stageImage.one() %}
+                        {% if image %}
+                        <img src="{{ image.getUrl('izobrazhenie515X210') }}" alt="{{ block.stageName }}" class="s-img-switch">
+                        {% endif %}
+                      </div>
+                      <div class="bottom-content">
+                        {{ block.stageBody|striptags|slice(0, 250) ~ '' }}
                       </div>
                     </div>
                   </div>
@@ -189,7 +228,7 @@
         {% endif %}
 
         {% if category.questTools | length %}
-        <div class="row margin-sm-40t padding-md-10t margin-sm-40b padding-md-10b">
+        <div class="row margin-lg-120t padding-md-10t padding-md-10b">
           <div class="col-sm-12">
             <div class="headlines-wrap margin-lg-40b">
               <h2 class="title">Примеры заданий и реквизита</h2>
@@ -198,12 +237,12 @@
               <div class="posts-list posts-list-infinity row">
 
                 {% for entry in category.questTools.all() %}
-                <div class="col-xs-12 col-sm-6 post-item-isotope  " s>
+                <div class="col-xs-12 col-sm-6 post-item-isotope">
                   <div class="post-item grid2 ">
                     {% set image = entry.toolsImage.one() %}
                     {% if image %}
                     <img src="" alt class="s-img-switch">
-                    <img src="{{ image.getUrl('izobrazhenie555X375') }}" alt="{{ entry.title }}" class="s-img-switch">
+                    <img src="{{ image.getUrl('izobrazhenie555X275') }}" alt="{{ entry.title }}" class="s-img-switch">
                     {% else %}
                     <img src="https://via.placeholder.com/555x275" alt="{{ entry.title }}" class="s-img-switch">
                     {% endif %}
@@ -230,10 +269,27 @@
         {% endif %}
 
         {% if category.questFeatures | length %}
-        <div class="row margin-sm-35t">
+        <div class="row">
           <div class="col-xs-12">
-            <div class="content">
-              <h3>Достоинства</h3>
+            <div class="headlines-wrap blog-title-wrap margin-lg-95t">
+              <h3 class="title">Достоинства формата</h3>
+            </div>
+          </div>
+        </div>
+        <div class="row row-eq-height margin-lg-20t margin-lg-40b">
+          <div class="col-sm-12 col-lg-6 col-md-6 col-xs-12">
+            <div>
+              {% set image = category.questFeaturesImage.one() %}
+              {% if image %}
+              <img src="{{ image.getUrl('izobrazhenie555X375') }}" alt="{{ category.title }}-процесс" class="">
+              {% else %}
+              <img src="https://via.placeholder.com/555x375" alt="{{ category.title }}" class="">
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-lg-6 col-md-6 col-xs-12">
+            <div class="headlines-wrap margin-lg-60b margin-md-30b margin-sm-10b margin-xs-0b ">
               {{ category.questFeatures }}
             </div>
           </div>
@@ -241,7 +297,7 @@
         {% endif %}
 
         {% if category.questFaq | length %}
-        <div class="row margin-lg-125t margin-sm-40t padding-md-10t margin-lg-125b margin-sm-40b padding-md-10b">
+        <div class="row margin-lg-125t padding-md-10t margin-lg-125b margin-sm-40b padding-md-10b">
           <div class="col-sm-12">
             <div class="headlines-wrap margin-lg-40b">
               <h2 class="title">Организационные вопросы</h2>
@@ -250,7 +306,7 @@
               <div class="posts-list posts-list-infinity row">
 
                 {% for entry in category.questFaq.all() %}
-                <div class="col-xs-12 col-sm-6 post-item-isotope  " s>
+                <div class="col-xs-12 col-sm-6 post-item-isotope">
                   <div class="post-item grid2 ">
                     {% set image = entry.scriptImage.one() %}
                     {% if image %}
@@ -315,10 +371,12 @@
 
 
         {% if category.questPortfolioImages | length %}
-        <div class="row margin-lg-60t margin-sm-35t">
+        <div class="row margin-lg-120t">
           <div class="col-xs-12">
             <div class="content">
-              <h3>Галлерея</h3>
+              <div class="headlines-wrap margin-lg-30b">
+                <h3 class="title">Галлерея</h3>
+              </div>
               {% for asset in category.questPortfolioImages.all() %}
               <div class="grid-item">
                 <a href="{{ asset.url() }}" data-fancybox="{{ entry.id }}">
@@ -332,17 +390,22 @@
         {% endif %}
 
         {% if category.questPortfolioVideo | length %}
-        <div class="row margin-lg-60t margin-sm-35t margin-lg-60b margin-sm-35b">
+        <div class="row margin-lg-120t margin-lg-60b ">
           <div class="col-xs-12">
             <div class="content">
-            <div class="video-content">
-              <h3>Видео</h3>
-              {% for block in category.questPortfolioVideo.all() %}
-
-              {{ block.videoEmbed|raw }}
-
-              {% endfor %}
-            </div>
+              <div class="headlines-wrap margin-lg-30b">
+                <h3 class="title">Видео с мероприятий</h3>
+              </div>
+              <div class="row">
+                {% for block in category.questPortfolioVideo.all() %}
+                <div class="col-md-6 col-sm-12 margin-lg-25b margin-sm-25b">
+                  {{ block.videoEmbed|raw }}
+                </div>
+                {% if loop.index is divisible by(2) %}
+                <div class="clearfix visible-md-block visible-lg-block"></div>
+                {% endif %}
+                {% endfor %}
+              </div>
             </div>
           </div>
         </div>
@@ -350,53 +413,51 @@
 
       </div>
     </div>
-    {% include "_includes/call-to-action" with { call_title: 'Получить презентации и смету' } %}
+    {% include "_includes/call-to-action" with { call_title: 'Получить презентацию и смету' } %}
 
     {% if category.questSimilar|length %}
     <div class="container">
-    <div class="row margin-lg-60t margin-sm-35t margin-lg-25b margin-sm-25b">
-      <div class="col-sm-12">
-        <div class="headlines-wrap margin-lg-40b">
-          <h2 class="title">Смотрите также</h2>
-        </div>
-      </div>
-        </div>
-        <div class="container-fluid">
-          <div class="posts-list posts-list-infinity row">
-
-            {% for entry in category.questSimilar.all() %}
-            <div class="col-xs-12 col-sm-6 post-item-isotope  " s>
-              <div class="post-item grid2 ">
-                {% set image = entry.questImage.one() %}
-                {% if image %}
-                <img src="" alt class="s-img-switch">
-                <img src="{{ image.getUrl('izobrazhenie555X275') }}" alt="{{ entry.title }}" class="s-img-switch">
-                {% else %}
-                <img src="https://via.placeholder.com/555x275" alt="{{ entry.title }}" class="s-img-switch">
-                {% endif %}
-                <div class="content">
-                  <i class="corner-1"></i>
-                  <i class="corner-2"></i>
-                  <i class="corner-3"></i>
-                  <i class="corner-4"></i>
-
-                  <div class="bottom-content">
-                    <a href="{{ entry.url }}"><h4 class="post-title">{{ entry.title }}</h4></a>
-                    <div class="address contact-wrap-item">
-                      <span class="contact-item">{{ entry.scriptShort }}</span>
-                    </div>
-                    <a href="{{ entry.url }}" class="a-btn">Подробнее</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {% endfor %}
-
+      <div class="row margin-lg-120t">
+        <div class="col-sm-12">
+          <div class="headlines-wrap margin-lg-30b">
+            <h2 class="title">Смотрите также</h2>
           </div>
         </div>
       </div>
-    {% endif %}
+      <div class="container-fluid">
+        <div class="posts-list posts-list-infinity row">
 
+          {% for entry in category.questSimilar.all() %}
+          <div class="col-xs-12 col-sm-6 post-item-isotope">
+            <div class="post-item grid2">
+              {% set image = entry.questImage.one() %}
+              {% if image %}
+              <img src="" alt class="s-img-switch">
+              <img src="{{ image.getUrl('izobrazhenie555X275') }}" alt="{{ entry.title }}" class="s-img-switch">
+              {% else %}
+              <img src="https://via.placeholder.com/555x275" alt="{{ entry.title }}" class="s-img-switch">
+              {% endif %}
+              <div class="content">
+                <i class="corner-1"></i>
+                <i class="corner-2"></i>
+                <i class="corner-3"></i>
+                <i class="corner-4"></i>
+
+                <div class="bottom-content">
+                  <a href="{{ entry.url }}"><h4 class="post-title">{{ entry.title }}</h4></a>
+                  <div class="address contact-wrap-item">
+                    <span class="contact-item">{{ entry.scriptShort }}</span>
+                  </div>
+                  <a href="{{ entry.url }}" class="a-btn">Подробнее</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endif %}
   </div>
 </section>
 
@@ -414,7 +475,7 @@
         <div class="container">
           <div class="posts-list row">
             {% nav category in craft.categories.group('questType').level(1).all() %}
-            <div class="col-xs-12 col-sm-6 col-md-6 post-item-isotope ">
+            <div class="col-xs-12 col-sm-6 col-md-6 post-item-isotope">
               <div class="post-item grid2 s-back-switch">
                 {% set image = category.questImage.one() %}
                 {% if image %}
@@ -443,7 +504,6 @@
     </div>
   </section>
 </div>
-
 
 {% endif %}
 {% endblock %}

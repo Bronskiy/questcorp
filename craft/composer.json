@@ -2,10 +2,10 @@
     "minimum-stability": "beta",
     "repositories": [],
     "require": {
-        "craftcms/cms": "3.0.11",
-        "craftcms/contact-form": "2.1.1",
+        "craftcms/cms": "3.0.19",
+        "craftcms/contact-form": "2.2.2",
         "craftcms/ckeditor": "1.0.0-beta.2",
-        "craftcms/redactor": "2.1.0",
+        "craftcms/redactor": "2.1.5",
         "bower-asset/bootstrap": "v3.3.7",
         "bower-asset/jquery": "2.2.4",
         "bower-asset/punycode": "v1.3.2",
@@ -21,6 +21,6 @@
         "tubalmartin/cssmin": "v4.1.1",
         "nystudio107/craft-richvariables": "1.0.17",
         "nystudio107/craft-minify": "1.2.7",
-        "lukeyouell/craft-geocookie": "1.1.2"
+        "lukeyouell/craft-geocookie": "1.2.1"
     }
 }
