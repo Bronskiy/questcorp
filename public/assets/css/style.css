@@ -679,6 +679,13 @@ ol,ul{
 .padding-lg-200b {
   padding-bottom: 200px;
 }
+.datepicker-days {
+  color: #666;
+}
+.datepicker table tr td.new,
+.datepicker table tr td.old {
+    color: #999;
+}
 #modal-cities .modal-dialog {
   width: 90%;
 }
@@ -4320,7 +4327,9 @@ a:visited {
   margin-top: 5px;
   letter-spacing: .2px;
 }
-
+.headlines-wrap p{
+  margin-bottom: 0;
+}
 .contact-wrap {
   padding-bottom: 7px;
 }

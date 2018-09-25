@@ -38,7 +38,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <div class="headlines-wrap  margin-lg-45b">
+            <div class="headlines-wrap">
               <h4 class="title">Получить презентацию и смету</h4>
             </div>
           </div>
@@ -67,7 +67,7 @@
               <input class="" type="text" name="message[Телефон]" placeholder="Телефон" required="required" >
               <input class="" type="email" name="fromEmail" placeholder="Email" value="{% if message is defined %}{{ message.fromEmail }}{% endif %}">
               {{ message is defined and message ? errorList(message.getErrors('fromEmail')) }}
-              <div class="form-group padding-lg-15t padding-md-15t padding-sm-15t padding-md-xs">
+              <div class="form-group mb-0 padding-lg-15t padding-md-15t padding-sm-15t padding-md-xs">
                 <div class="row">
                   <div class="col-md-6">
                     <label class="control-label required-label"><input type="checkbox" required=""> Я согласен на обработку персональных данных.</label>
