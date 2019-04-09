@@ -1,4 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Exo+2:400,800|Open+Sans:400,400i,700,700i&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css?family=Exo+2:400,800|Open+Sans:300,400,400i,700,700i&subset=cyrillic');
+@media (min-width: 992px) {
+.navbar-collapse.collapse {
+  display: block !important;
+  height: auto !important;
+  padding-bottom: 0;
+  overflow: visible !important;
+}
+}
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
   font-family: 'Exo 2', sans-serif;
 }
@@ -685,6 +693,24 @@ ol,ul{
 .datepicker table tr td.new,
 .datepicker table tr td.old {
     color: #999;
+}
+.whatsapp-button{
+  width: 130px;
+  display: block;
+  position: fixed;
+  bottom: 10%;
+  right: 3%;
+  z-index: 9999;
+  text-align: center;
+  color: #fff;
+}
+.whatsapp-button span{
+
+}
+.whatsapp-button-img{
+  max-width: 60px;
+  margin: 0 auto 10px;
+  display: block;
 }
 #modal-cities .modal-dialog {
   width: 90%;
@@ -4453,7 +4479,10 @@ a:visited {
 .wpcf7-form input[type="submit"]:hover {
   color: white;
 }
-
+.wpcf7-form .checkbox input[type=checkbox]{
+  width: 10px;
+  background-color: unset;
+}
 .wpcf7-form .submit-wrap {
   display: inline-block;
   margin-left: 45px;
@@ -6352,6 +6381,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   color: #fff;
   padding: 12px 20px;
 }
+.single-post .post-detailed img{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
 
 .single-post .comment-respond form input:not([type="submit"])::-webkit-input-placeholder,
 .single-post .comment-respond form textarea::-webkit-input-placeholder,
@@ -6476,11 +6509,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 .single-post .post-tags a {
   color: #ffffff;
 }
-.single-post .post-category a:hover,
-.single-post .post-tags a:hover {
+.single-post .post-category a:hover{
   color: #ED900C;
 }
-
+.single-post .post-tags a:hover{
+  color: #eaeaea;
+}
 .single-post .post-category a:visited,
 .single-post .post-category a:active,
 .single-post .post-category a:focus,
@@ -6539,7 +6573,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   font-size: 16px;
   font-family: "Open Sans", sans-serif;
   line-height: 1.8;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 
 .single-post .post-content form p {

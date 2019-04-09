@@ -1,0 +1,68 @@
+<script type="text/javascript" src="https://questcorp.events/assets/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="https://questcorp.events/assets/js/js.cookie-2.2.0.min.js"></script>
+<script type="text/javascript" src="https://questcorp.events/assets/js/jquery.sidr.min.js"></script>
+<script type="text/javascript" src="https://questcorp.events/assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://questcorp.events/assets/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="https://questcorp.events/assets/js/bootstrap-datepicker.ru.min.js"></script>
+<script type="text/javascript" src="https://questcorp.events/assets/js/anchors.navigation.js"></script>
+<script type="text/javascript" src="https://questcorp.events/assets/js/equalHeightsPlugin.js"></script>
+<script type="text/javascript" src="https://questcorp.events/assets/js/foxlazy.js"></script>
+<script type="text/javascript" src="https://questcorp.events/assets/js/fullPage.js"></script>
+<script type="text/javascript" src="https://questcorp.events/assets/js/isotope.pkgd.min.js"></script>
+<script type="text/javascript" src="https://questcorp.events/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="https://questcorp.events/assets/js/scrolloverflow.js"></script>
+<script type="text/javascript" src="https://questcorp.events/assets/js/swiper.min.js"></script>
+<script type="text/javascript" src="https://questcorp.events/assets/fancybox/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="https://questcorp.events/assets/js/all.js"></script>
+{% if remove_cookie != '1' %}
+<script>
+$( document ).ready(function() {
+  $('.geo-confirm').click(function(){
+    Cookies.set('geoConfirmed', true, { expires: 45, domain: '.questcorp.events'});
+  });
+  if(!Cookies.get('geoConfirmed')){
+    $('.geolocation-popup').show();
+  } else{
+    $('.geolocation-popup').hide();
+  }
+  if(!Cookies.get('vashGorod')){
+    Cookies.set('vashGorod', '{{ location.city }}', { expires: 45, domain: '.questcorp.events'});
+    $('.welcome-msg .location').html('<i class="fa fa-map-marker" aria-hidden="true"></i> ' + Cookies.get('vashGorod'));
+    // console.log('ne bylo cookie');
+  }
+  if(Cookies.get('vashGorod')){
+    $('.welcome-msg .location').html('<i class="fa fa-map-marker" aria-hidden="true"></i> ' + Cookies.get('vashGorod'));
+    var curSiteCity = '{{ craft.app.sites.currentSite.name|split(' ')|slice(1, 2)|join(' ') }}';
+    var curSiteURL = '{{ currentSite.baseUrl }}';
+    if(Cookies.get('vashGorod') != curSiteCity){
+      // console.log('город сайта ' + curSiteCity);
+      // console.log('город пользователя ' + Cookies.get('vashGorod'));
+      // console.log('не совпадает');
+      var userCityExist = $.grep(allCities, function(e){ return e.city == Cookies.get('vashGorod'); });
+      // console.log(userCityExist.length);
+      if (userCityExist.length == 0 && curSiteURL != 'https://questcorp.events/') {
+        // not found
+        window.location = "https://questcorp.events/";
+      } else if (userCityExist.length == 1) {
+        // access the foo property using result[0].foo
+        window.location = userCityExist[0].url;
+      } else {
+        // multiple items found
+      }
+    }
+    //  console.log('gorod sovpal ili posle redirect');
+  }
+  $("#changeCity a").click(function() {
+    //Do stuff when clicked
+    event.preventDefault();
+    Cookies.remove('vashGorod');
+    Cookies.set('vashGorod', $(this).data("content"), { expires: 45, domain: '.questcorp.events'});
+    var curSiteCity = $(this).data("content");
+    Cookies.set('geoConfirmed', true, { expires: 45, domain: '.questcorp.events'});
+    // console.log('город сайта ' + curSiteCity);
+    // console.log('город пользователя ' + Cookies.get('vashGorod'));
+    window.location = $(this).data("page");
+  });
+});
+</script>
+{% endif %}

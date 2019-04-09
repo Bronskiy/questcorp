@@ -14,7 +14,7 @@
     <div class="container">
       <div class="row margin-lg-40b margin-sm-40b padding-md-10b">
         <div class="col-xs-12">
-          <h4 class="post-title">{{ entry.title }}</h4>
+          <h1 class="post-title">{{ entry.title }}</h1>
           <div class="post-info">
             <div class="post-date"><i class="fa fa-calendar" aria-hidden="true"></i>{{ entry.postDate|date('d F, Y') }}</div>
           </div>
@@ -26,6 +26,9 @@
 <div class="container single-post">
   <div class="row">
     <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-8">
+
       <div class="post-detailed">
         <div class="post-content ">
           {{ entry.blogBody }}
@@ -37,6 +40,8 @@
           <a href="{{ url('blog/tags/'~tag.slug) }}">#{{ tag.title }}</a>
           {% endfor %}
         </div>
+      </div>
+      </div>
       </div>
 
       {% if allRelatedEntries|length %}

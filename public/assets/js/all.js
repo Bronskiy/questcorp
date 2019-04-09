@@ -7,6 +7,7 @@
             mode: 'event'
         });
     }
+
     $('.geo-confirm').on('click', function(){
     $(".geolocation-popup").hide();      // hide element
     });
@@ -502,13 +503,13 @@
     });
     $(window).on('resize', function() {
         initSwiper();
-        overflow();
+        //overflow();
         sampleHeight();
         padding_for_menu();
     });
     $(window).on("orientationchange", function() {
         initSwiper();
-        overflow();
+        //overflow();
         sampleHeight();
         padding_for_menu();
     });

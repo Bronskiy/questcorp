@@ -33,223 +33,32 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/assets/favicon/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
+  {% include "_includes/_styles.html" %}
+  {{ globalanalyticsHeader.textUnformatted|raw }}
 
-  <link rel="stylesheet" type="text/css" href="https://questcorp.events/assets/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="https://questcorp.events/assets/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="https://questcorp.events/assets/css/sidr.dark.min.css">
-  <link rel="stylesheet" type="text/css" href="https://questcorp.events/assets/css/fullPage.min.css">
-  <link rel="stylesheet" type="text/css" href="https://questcorp.events/assets/css/swiper.min.css">
-  <link rel="stylesheet" type="text/css" href="https://questcorp.events/assets/fancybox/jquery.fancybox.min.css">
-  <link rel="stylesheet" type="text/css" href="https://questcorp.events/assets/css/bootstrap-datepicker.min.css">
-  <link rel="stylesheet" type="text/css" href="https://questcorp.events/assets/css/style.css">
 </head>
 <body>
-  {#
-    <div id="loading">
-      <div class="a-preload">
-        <div class="cssload-preloader cssload-loading">
-          <span class="cssload-slice"></span>
-          <span class="cssload-slice"></span>
-          <span class="cssload-slice"></span>
-          <span class="cssload-slice"></span>
-          <span class="cssload-slice"></span>
-          <span class="cssload-slice"></span>
-        </div>
-      </div>
-    </div>
-    #}
+  {# {% include "_includes/_loader.html" %} #}
+  {% include "_includes/_header.html" %}
 
-    <header class="questroom-header" id="header">
-      <div class="header-top">
-        <div class="container">
-          <div class="phone-container">
-            <div class="contact-item">
-              <a href="tel:{{ globalPhone1.textFormatted }}"><i class="fa fa-phone" aria-hidden="true"></i> {{ globalPhone1.textUnformatted }}</a>
-            </div>
-            <div class="contact-item">
-              <a href="tel:{{ globalPhone2.textFormatted }}"><i class="fa fa-phone" aria-hidden="true"></i> {{ globalPhone2.textUnformatted }}</a>
-            </div>
-          </div>
-          <div class="top-menu-area">
-            <ul class="top-menu">
-              {% nav entry in craft.entries.section('topMenu').all() %}
-              <li><a {% if craft.request.firstSegment ==  entry.mainMenuLink|split('/')|slice(1, 2)|join('/') %}class="active"{% endif %} href="{{ entry.mainMenuLink }}">{{ entry.title }}</a></li>
-              {% endnav %}
-            </ul>
-          </div>
-          <p class="welcome-msg">
-            {#
-              {% if location.city != craft.app.sites.currentSite.name|split(' ')|slice(1, 2)|join(' ') and currentSite.baseUrl != 'https://questcorp.events/'%}
-              {% redirect "https://questcorp.events/" %}
-              {% endif %}
-              #}
-              Ваш город: <a href="#" id="modal-action-submit" data-toggle="modal" data-target="#modal-cities"><span class="location"><i class="fa fa-map-marker" aria-hidden="true"></i> 	{{ location.city }}</span></a></p>
-              <div class="geolocation-popup">
-                <p>Ваш город 	{{ location.city }}?</p>
-                <a href="#" id="modal-action-submit" data-toggle="modal" data-target="#modal-cities"><span class="geo-change">Изменить</span></a>
-                <span class="geo-confirm">Да</span>
-              </div>
-            </div>
-          </div>
-          <div class="header-bottom">
-            <div class="container">
-              <div class="questroom-logo">
-                <a href="/">
-                  <img class="logo__img" src="{{ globalLogo.commonImage.one().getUrl() }}" alt>
-                  <img class="mobile_logo__img" src="{{ globalMobileLogo.commonImage.one().getUrl() }}" alt>
-                </a>
-              </div>
-              <div class="questroom-navigation style2">
-                <a href="#" class="a-btn header-action" id="modal-action-submit" data-toggle="modal" data-target="#modal-submit">Оставить заявку</a>
-                <nav>
-                  <ul id="menu-menu-1" class="menu">
-                    {% nav entry in craft.entries.section('mainMenu').all() %}
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page page-scroll">
-                      <a class="anchor-scroll {% if craft.request.firstSegment ==  entry.mainMenuLink|split('/')|slice(1, 2)|join('/') %}active{% endif %}" href="{{ entry.mainMenuLink }}" data-hash="{{ entry.mainMenuLink }}">{{ entry.title }}</a>
-                    </li>
-                    {% endnav %}
-                  </ul>
-                </nav>
-                <div class="questroom-nav-menu-icon"><a id="mobile-menu" href="#sidr"><i class="fa fa-bars" aria-hidden="true"></i></a></div>
-              </div>
-            </div>
-          </div>
-        </header>
+  {% block content %}
+  <p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
+  <p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
+  {% endblock %}
 
-        {% block content %}
-        <p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
-        <p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
-        {% endblock %}
+  {% include "_includes/_footer.html" %}
+  {% include "_includes/modal-form.html" %}
+  {% include "_includes/modal-cities.html" %}
+  <div class="clearfix"></div>
+  {% include "_includes/mobile-menu.html" %}
+  {% include "_includes/_js.html" %}
 
-        <footer class="questroom-footer ">
-          <div class="questroom-footer-content">
-            <div class="container">
-              <div class="row margin-lg-40t margin-sm-40t padding-md-10t">
-                <div class="col-sm-6 col-lg-3 col-md-3 col-xs-12 nav-widget">
-                  <h5 class="title">Услуги</h5>
-                  <ul>
-                    {% for entry in craft.entries.section('services').limit(5).all() %}
-                    <li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
-                    {% endfor %}
-                  </ul>
-                </div>
-                <div class="col-sm-6 col-lg-3 col-md-3 col-xs-12 nav-widget">
-                  <h5 class="title">Навигация</h5>
-                  <ul>
-                    {% nav entry in craft.entries.section('footerMenu').all() %}
-                    <li><a href="{{ entry.mainMenuLink }}">{{ entry.title }}</a></li>
-                    {% endnav %}
-                  </ul>
-                </div>
-                <div class="col-sm-6  col-lg-3  col-md-3  col-xs-12">
-                  <h5 class="title">Связаться с нами</h5>
-                  <div class="contact-wrap ">
-                    <div class="description">
-                      <p><a href="tel:{{ globalPhone1.textFormatted }}">{{ globalPhone1.textUnformatted }}</a></p>
-                      <p><a href="tel:{{ globalPhone2.textFormatted }}">{{ globalPhone2.textUnformatted }}</a></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6  col-lg-3  col-md-3  col-xs-12">
-                  <div class="questroom-footer-social">
-                    <div class="questroom-social-list">
-                      <h5 class="title">Мы в соцсетях</h5>
-                      <ul class="socials socials-about list-unstyled list-inline">
-                        <li><a href="{{ globalVkontakte.textUnformatted }}"><i class="fa fa-vk"></i></a></li>
-                        <li><a href="{{ globalFacebook.textUnformatted }}"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="{{ globalInstagram.textUnformatted }}"><i class="fa fa-instagram"></i></a></li>
-                        <li><a href="{{ globalYoutube.textUnformatted }}"><i class="fa fa-youtube"></i></a></li>
-                        <li><a href="{{ globalGooglePlus.textUnformatted }}"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="{{ globalTwitter.textUnformatted }}"><i class="fa fa-twitter"></i></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="questroom-footer-bottom-content">
-            <div class="row  margin-lg-40t margin-sm-40t padding-md-10t">
-              <div class="col-md-12 copyright-info">
-                <p>Copyright {{ now|date('Y') }} {{ craft.app.request.serverName | ucfirst }}. Все права защищены  •  Сайт создан студией <a href="https://www.iconicline.com/ru">Iconicline</a></p>
-              </div>
-            </div>
-          </div>
-        </footer>
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-59d06869968fa8e8"></script>
+  {{ globalAnalytics.textUnformatted|raw }}
 
-        {% include "_includes/modal-form.html" %}
-        {% include "_includes/modal-cities.html" %}
-        <div class="clearfix"></div>
-        {% include "_includes/mobile-menu.html" %}
-
-        <script type="text/javascript" src="https://questcorp.events/assets/js/jquery-2.2.4.min.js"></script>
-        <script type="text/javascript" src="https://questcorp.events/assets/js/js.cookie-2.2.0.min.js"></script>
-        <script type="text/javascript" src="https://questcorp.events/assets/js/jquery.sidr.min.js"></script>
-        <script type="text/javascript" src="https://questcorp.events/assets/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="https://questcorp.events/assets/js/bootstrap-datepicker.min.js"></script>
-        <script type="text/javascript" src="https://questcorp.events/assets/js/bootstrap-datepicker.ru.min.js"></script>
-        <script type="text/javascript" src="https://questcorp.events/assets/js/anchors.navigation.js"></script>
-        <script type="text/javascript" src="https://questcorp.events/assets/js/equalHeightsPlugin.js"></script>
-        <script type="text/javascript" src="https://questcorp.events/assets/js/foxlazy.js"></script>
-        <script type="text/javascript" src="https://questcorp.events/assets/js/fullPage.js"></script>
-        <script type="text/javascript" src="https://questcorp.events/assets/js/isotope.pkgd.min.js"></script>
-        <script type="text/javascript" src="https://questcorp.events/assets/js/jquery.fitvids.js"></script>
-        <script type="text/javascript" src="https://questcorp.events/assets/js/scrolloverflow.js"></script>
-        <script type="text/javascript" src="https://questcorp.events/assets/js/swiper.min.js"></script>
-        <script type="text/javascript" src="https://questcorp.events/assets/fancybox/jquery.fancybox.min.js"></script>
-        <script type="text/javascript" src="https://questcorp.events/assets/js/all.js"></script>
-        <script>
-        $( document ).ready(function() {
-          $('.geo-confirm').click(function(){
-            Cookies.set('geoConfirmed', true, { expires: 45, domain: '.questcorp.events'});
-          });
-          if(!Cookies.get('geoConfirmed')){
-            $('.geolocation-popup').show();
-          } else{
-            $('.geolocation-popup').hide();
-          }
-          if(!Cookies.get('vashGorod')){
-            Cookies.set('vashGorod', '{{ location.city }}', { expires: 45, domain: '.questcorp.events'});
-            $('.welcome-msg .location').html('<i class="fa fa-map-marker" aria-hidden="true"></i> ' + Cookies.get('vashGorod'));
-            // console.log('ne bylo cookie');
-          }
-          if(Cookies.get('vashGorod')){
-            $('.welcome-msg .location').html('<i class="fa fa-map-marker" aria-hidden="true"></i> ' + Cookies.get('vashGorod'));
-            var curSiteCity = '{{ craft.app.sites.currentSite.name|split(' ')|slice(1, 2)|join(' ') }}';
-            var curSiteURL = '{{ currentSite.baseUrl }}';
-            if(Cookies.get('vashGorod') != curSiteCity){
-              // console.log('город сайта ' + curSiteCity);
-              // console.log('город пользователя ' + Cookies.get('vashGorod'));
-              // console.log('не совпадает');
-              var userCityExist = $.grep(allCities, function(e){ return e.city == Cookies.get('vashGorod'); });
-              // console.log(userCityExist.length);
-              if (userCityExist.length == 0 && curSiteURL != 'https://questcorp.events/') {
-                // not found
-                window.location = "https://questcorp.events/";
-              } else if (userCityExist.length == 1) {
-                // access the foo property using result[0].foo
-                window.location = userCityExist[0].url;
-              } else {
-                // multiple items found
-              }
-            }
-            //  console.log('gorod sovpal ili posle redirect');
-          }
-          $("#changeCity a").click(function() {
-            //Do stuff when clicked
-            event.preventDefault();
-            Cookies.remove('vashGorod');
-            Cookies.set('vashGorod', $(this).data("content"), { expires: 45, domain: '.questcorp.events'});
-            var curSiteCity = $(this).data("content");
-            Cookies.set('geoConfirmed', true, { expires: 45, domain: '.questcorp.events'});
-            // console.log('город сайта ' + curSiteCity);
-            // console.log('город пользователя ' + Cookies.get('vashGorod'));
-            window.location = $(this).data("page");
-          });
-        });
-        </script>
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-59d06869968fa8e8"></script>
-        {{ globalAnalytics.textUnformatted|raw }}
-      </body>
-      </html>
+  {% if conversion_tag is defined %}
+  {{ conversion_tag|raw }}
+  {% endif %}
+</body>
+</html>
