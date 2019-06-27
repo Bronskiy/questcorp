@@ -6,27 +6,12 @@
 {% block content %}
 <nav class="navbar navbar-default">
   <div class="container">
-    <div class="top-mobile-header">
-
-      <div class="head-center">
-        <a class="" href="tel:{{ block.telefon|replace('/\D+/', '') }}"><i class="fa fa-phone" aria-hidden="true"></i> {{ block.telefon }}</a>
-        <span class="schedule">{{ block.grafikRaboty|raw }}</span>
-      </div>
-    </div>
-
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-
+      {% set mobileLogo = entry.landingMobilNyyLogotip.one() %}
+      {% if mobileLogo %}
+      <img class="mobile_logo__img" src="{{ mobileLogo.getUrl() }}" alt="mobile logo">
+      {% endif %}
       <div class="head-left">
-        {% set mobileLogo = entry.landingMobilNyyLogotip.one() %}
-        {% if mobileLogo %}
-        <img class="mobile_logo__img" src="{{ mobileLogo.getUrl() }}" alt="mobile logo">
-        {% endif %}
         <a href="/" class="navbar-brand">
           {% set logo = entry.landingLogotip.one() %}
           {% if logo %}
@@ -34,13 +19,10 @@
           {% endif %}
         </a>
       </div>
-
+      <div class="head-right">
+        <a class="call-us-btn" id="btn-1" href="#" data-toggle="modal" data-target="#modal-submit">Перезвоните мне!</a>
+      </div>
     </div><!--/.nav-collapse -->
-
-    <div id="navbar" class="navbar-collapse collapse">
-      <a href="#" class="a-btn header-action" id="modal-action-submit" data-toggle="modal" data-target="#modal-submit">Перезвоните мне</a>
-
-    </div>
   </div>
 </nav>
 {% for block in entry.landingSections.all() %}
@@ -57,69 +39,102 @@ data-paroller-factor-xs="0.2">
 <div class="content ">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-md-3">
+      <div class="col-md-12">
         {{ block.tekst3 }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <a href="#" data-toggle="modal" data-target="#modal-submit" class="btn-rasschet" id="btn-2">Получить расчет прибыли, окупаемости и расхода</a>
+        <a href="#" data-toggle="modal" data-target="#modal-submit" class="btn-sobst"  id="btn-3">Побеседовать с собственником франшизы</a>
+        <p>*Расчет на город от 500 тыс. жителей, инвестиции 350 000 руб.</p>
       </div>
     </div>
   </div>
 </div>
 </div>
 {% elseif block.type == 'sektsiya1' %}
-<div id="sektsiya1" class="post-img-wrap single-post parallax-window"
-{% set image = block.izobrazhenie1.one() %}
-{% if image %}
-style="background: url('{{ image.getUrl() }}') no-repeat center;
-{% endif %}
-background-size: cover;"
-data-paroller-factor="-0.1">
-<div class="content ">
-  <div class="container">
+<div class="white-section" id="sektsiya1" >
+  <div class="container section">
     <div class="row">
-      <div class="col-md-offset-2 col-md-8">
-
-        {{ block.zagolovok1 }}
+      <div class="col-md-6">
+        {% set image = block.izobrazhenie1.one() %}
+        {% if image %}
+        <img src="{{ image.getUrl() }}">
+        {% endif %}
+      </div>
+      <div class="col-md-6">
+        <div class="headlines-wrap">
+          <div>{{ block.zagolovok1 }}</div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-</div>
+
 {% elseif block.type == 'sektsiya7' %}
 <div id="sektsiya7" class="container section fp-auto-height p-auto-height-responsive">
   <div class="row">
-    <div class="col-md-offset-2 col-md-8">
+    <div class="col-md-6">
       <div class="headlines-wrap">
         <h2>{{ block.zagolovok7 }}</h2>
         <div>{{ block.tekst7 }}</div>
       </div>
     </div>
-  </div>
-  {% if block.video7 | length %}
-  <div class="row video-wrapper">
-    {% for row in block.video7 %}
-    <div class="col-md-4 video-item">
-      {{ row.kodVideo|raw }}
+    <div class="col-md-6">
+      {% if block.video7 | length %}
+      <div class="row video-wrapper">
+        {% for row in block.video7 %}
+        {% if loop.first %}
+        <div class="col-md-12 video-item">
+          {{ row.kodVideo|raw }}
+        </div>
+        {% else %}
+        <div class="col-md-6 video-item">
+          {{ row.kodVideo|raw }}
+        </div>
+        {% endif %}
+
+        {% endfor %}
+      </div>
+      {% endif %}
     </div>
-    {% endfor %}
   </div>
-  {% endif %}
-
 </div>
-{% elseif block.type == 'sektsiya2' %}
-{{ block.zagolovok2 }}
-{{ block.tekst2 }}
-{% elseif block.type == 'sektsiya15' %}
-{% set images = block.skrinshoty15 %}
-{% for image in images %}
-<img src="{{ image.getUrl() }}" alt="">
-{% endfor %}
-
+<div class="white-section">
+  <div id="sektsiya15" class="container section fp-auto-height p-auto-height-responsive">
+    {% elseif block.type == 'sektsiya2' %}
+    <div class="row">
+      <div class="col-md-12">
+        <div class="headlines-wrap">
+          <h2>{{ block.zagolovok2|raw }}</h2>
+          <div class="row">
+            <div class="col-md-6 col-xs-12">{{ block.tekst2 }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% elseif block.type == 'sektsiya15' %}
+    <div class="row">
+      <div class="col-md-12">
+        {% set images = block.skrinshoty15 %}
+        {% for image in images %}
+        <img src="{{ image.getUrl() }}" alt="">
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
 {% elseif block.type == 'sektsiya10' %}
 <div class="gray-section">
   <div id="sektsiya10" class="container section fp-auto-height p-auto-height-responsive">
     <div class="row">
-      <div class="col-md-offset-3 col-md-6">
+      <div class="col-md-12">
         <div class="headlines-wrap">
-          <h2>{{ block.zagolovok10 }}</h2>
+          <h2>{{ block.zagolovok10|raw }}</h2>
+          <div class="row">
+            <div class="col-md-6 col-xs-12">{{ block.tekst10 }}</div>
+          </div>
         </div>
       </div>
     </div>
@@ -137,35 +152,209 @@ data-paroller-factor="-0.1">
   </div>
 </div>
 {% elseif block.type == 'sektsiya5' %}
-{{ block.zagolovok5 }}
-{{ block.tekst5 }}
+<div id="sektsiya5" class="container section fp-auto-height p-auto-height-responsive">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="headlines-wrap">
+        <h2>{{ block.zagolovok5 }}</h2>
+        <div class="row">
+          <div class="col-md-6 col-xs-12">{{ block.tekst5 }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row row-eq-height">
+  {% for sotrudnik in entry.landingRukovodyashchiySostav.all() %}
+  <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="sotrudnik-wrap">
+      <div class="img-wrap">
+        {% set image = sotrudnik.foto.one() %}
+        {% if image %}
+        <img src="{{ image.getUrl('izobrazhenie320X310') }}" alt="{{ sotrudnik.imya }}" class="">
+        {% endif %}
+      </div>
+
+      <h5>{{ sotrudnik.imya }}</h5>
+      <h6>{{ sotrudnik.dolzhnost }}</h6>
+      <div class="post-excerpt">
+        <p>{{ sotrudnik.obyazannosti }}</p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+
+</div>
 {% elseif block.type == 'sektsiya6' %}
-{{ block.zagolovok6 }}
-{{ block.tekst6 }}
-{% elseif block.type == 'sektsiya4' %}
-{{ block.tekst4 }}
+<div class="white-section">
+  <div id="sektsiya6" class="container section fp-auto-height p-auto-height-responsive">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="headlines-wrap text-center">
+          <h2>{{ block.zagolovok6 }}</h2>
+          <div>{{ block.tekst6 }}</div>
+        </div>
+      </div>
+      {% if entry.landingAbout | length %}
+<div class="col-md-12">
+  <div class="row icons">
+    {% for item in entry.landingAbout.all() %}
+    <div class="col-sm-6 col-md-3 icon-item">
+      {% set image = item.ikonka.one() %}
+      {% if image %}
+      <img src="{{ image.getUrl() }}" alt="" >
+      {% else %}
+      <img src="https://via.placeholder.com/48x48" alt="">
+      {% endif %}
+      <div class="content">
+        <h5>{{ item.zagolovok }}</h5>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+    </div>
+  </div>
+  {% elseif block.type == 'sektsiya4' %}
+  <div id="sektsiya4" class="container section fp-auto-height p-auto-height-responsive">
+    <div class="row">
+      <div class="col-md-offset-2 col-md-8">
+        <div class="headlines-wrap">
+          <div>{{ block.tekst4 }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% elseif block.type == 'sektsiya8' %}
-{{ block.zagolovok8 }}
-{{ block.tekst8 }}
+<div id="sektsiya8" class="container section fp-auto-height p-auto-height-responsive">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="headlines-wrap">
+        <h2>{{ block.zagolovok8|raw }}</h2>
+        <div class="row">
+          <div class="col-md-6 col-xs-12">{{ block.tekst8 }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="timeline">
+        {% for step in entry.landingShagiKBiznesu.all() %}
+        <div class="timeline-container {% if loop.index is odd %}left{% else %}right{% endif %}">
+          <div class="timeline-content">
+            <h3>{{ step.nazvanie }}</h3>
+            <div class="">
+              {{ step.opisanie }}
+            </div>
+            <p class="timeline-srok">{{ step.srok }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% elseif block.type == 'knopkiDlyaFormySTekstom' %}
+<div class="white-section" id="knopkiDlyaFormySTekstom">
+  <div id="" class="container section fp-auto-height p-auto-height-responsive">
+    <div class="row">
+      <div class="col-md-offset-1 col-md-10">
+        <div class="headlines-wrap text-center">
+          {{ block.tekst1 }}
+          <a href="#" data-toggle="modal" data-target="#modal-submit" class="btn-rasschet"  id="btn-4">{{ block.tekstKnopki1 }}</a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-offset-1 col-md-10">
+        <div class="headlines-wrap text-center">
+          {{ block.tekst2 }}
+          <a href="#" data-toggle="modal" data-target="#modal-submit" class="btn-sobst"  id="btn-5">{{ block.tekstKnopki2 }}</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-offset-2 col-md-8 first-p-space">
+        {{ block.tekstOpisanie }}
+      </div>
+      <div class="col-xs-12 col-md-2">
+        {% set dokument = block.dokument.one() %}
+        {% if dokument %}
+        <a href="{{ dokument.getUrl() }}" data-fancybox="docs"><img src="{{ dokument.getUrl('width200px') }}"></a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
 
 {% elseif block.type == 'sektsiya16' %}
-{{ block.tekst16 }}
+<div id="sektsiya16" class="container section fp-auto-height p-auto-height-responsive">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="headlines-wrap">
+        <div>{{ block.tekst16 }}</div>
+      </div>
+    </div>
+  </div>
+  {% if entry.landingInstrumenty | length %}
+  {% for instrument in entry.landingInstrumenty %}
+  <div class="row row-internal-wrapper">
+    <div class="col-md-2">
+      <div class="icon-wrapper">
+        {% set image = instrument.ikonka.one() %}
+        {% if image %}
+        <img src="{{ image.getUrl('') }}">
+        {% endif %}
+      </div>
+    </div>
+    <div class="col-md-10">
+      {{ instrument.opisanie }}
+    </div>
+  </div>
+  {% endfor %}
+  {% endif %}
+</div>
+
 
 {% elseif block.type == 'sektsiya14' %}
-{{ block.zagolovok14 }}
-{% if block.tablitsa14 | length %}
-<table>
-  <tbody>
-    {% for row in block.tablitsa14 %}
-    <tr>
-      <td>{{ row.naimenovanie }}</td>
-      <td>{{ row.sobstvennyyBiznes }}</td>
-      <td>{{ row.franshiza }}</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-{% endif %}
+<div id="sektsiya14" class="white-section section fp-auto-height p-auto-height-responsive">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="headlines-wrap">
+          <h2>{{ block.zagolovok14 }}</h2>
+        </div>
+      </div>
+    </div>
+    {% if block.tablitsa14 | length %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Собственный бизнес</th>
+          <th>Франшиза QUESTCORP</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in block.tablitsa14 %}
+        <tr>
+          <td>{{ row.naimenovanie|raw }}</td>
+          <td>{{ row.sobstvennyyBiznes|raw }}</td>
+          <td class="gray-cell-bg">{{ row.franshiza|raw }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+  </div>
+</div>
+
 {% elseif block.type == 'sektsiya13' %}
 <footer id="contacts-footer" class="questroom-footer post-img-wrap parallax-window--disabled"
 {% set image = block.izobrazhenie13.one() %}

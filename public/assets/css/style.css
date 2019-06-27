@@ -716,6 +716,7 @@ ol,ul{
   width: 90%;
 }
 #modal-submit,
+#modal-sorry,
 #modal-cities{
   z-index: 99999;
 }
@@ -726,6 +727,26 @@ ol,ul{
   display: inline-flex;
   margin: 5px 0;
   width: 19%;
+}
+#modal-sorry h5.modal-title{
+  text-transform: uppercase;
+  color: #ed900c;
+  font-size: 28px;
+  text-align: center;
+}
+#modal-sorry .modal-body span{
+  color: #ed900c;
+}
+#modal-sorry .modal-body .a-btn{
+  margin: 0 auto;
+  padding: 15px 30px;
+  text-align: center;
+  display: block;
+  max-width: 180px;
+}
+#modal-sorry .modal-body .a-btn::after,
+#modal-sorry .modal-body .a-btn::before{
+  content: unset;
 }
 .modal.fade.in{
   background-color: rgba(0, 0, 0, 0.9);

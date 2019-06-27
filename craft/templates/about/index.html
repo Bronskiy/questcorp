@@ -57,10 +57,10 @@
             </div>
 
             {% if loop.index is divisible by(2) %}
-            <div class="clearfix visible-sm-block"></div>
+            <div class="clearfix visible-sm-block visible-xs-block"></div>
             {% endif %}
             {% if loop.index is divisible by(3) %}
-            <div class="clearfix visible-md-block"></div>
+            <div class="clearfix visible-md-block visible-lg-block"></div>
             {% endif %}
 
             {% endfor %}

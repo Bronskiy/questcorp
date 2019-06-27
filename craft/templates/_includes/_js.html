@@ -28,18 +28,18 @@ $( document ).ready(function() {
   if(!Cookies.get('vashGorod')){
     Cookies.set('vashGorod', '{{ location.city }}', { expires: 45, domain: '.questcorp.events'});
     $('.welcome-msg .location').html('<i class="fa fa-map-marker" aria-hidden="true"></i> ' + Cookies.get('vashGorod'));
-    // console.log('ne bylo cookie');
+     console.log('ne bylo cookie');
   }
   if(Cookies.get('vashGorod')){
     $('.welcome-msg .location').html('<i class="fa fa-map-marker" aria-hidden="true"></i> ' + Cookies.get('vashGorod'));
     var curSiteCity = '{{ craft.app.sites.currentSite.name|split(' ')|slice(1, 2)|join(' ') }}';
     var curSiteURL = '{{ currentSite.baseUrl }}';
     if(Cookies.get('vashGorod') != curSiteCity){
-      // console.log('город сайта ' + curSiteCity);
-      // console.log('город пользователя ' + Cookies.get('vashGorod'));
-      // console.log('не совпадает');
+       console.log('город сайта ' + curSiteCity);
+       console.log('город пользователя ' + Cookies.get('vashGorod'));
+       console.log('не совпадает');
       var userCityExist = $.grep(allCities, function(e){ return e.city == Cookies.get('vashGorod'); });
-      // console.log(userCityExist.length);
+       console.log(userCityExist.length);
       if (userCityExist.length == 0 && curSiteURL != 'https://questcorp.events/') {
         // not found
         window.location = "https://questcorp.events/";
@@ -59,10 +59,15 @@ $( document ).ready(function() {
     Cookies.set('vashGorod', $(this).data("content"), { expires: 45, domain: '.questcorp.events'});
     var curSiteCity = $(this).data("content");
     Cookies.set('geoConfirmed', true, { expires: 45, domain: '.questcorp.events'});
-    // console.log('город сайта ' + curSiteCity);
-    // console.log('город пользователя ' + Cookies.get('vashGorod'));
+     console.log('город сайта ' + curSiteCity);
+     console.log('город пользователя ' + Cookies.get('vashGorod'));
     window.location = $(this).data("page");
   });
+  if (curSiteCity != 'undefined' && curSiteCity != 'Москва') {
+    $('#modal-sorry').modal('show');
+  }
 });
+
+
 </script>
 {% endif %}

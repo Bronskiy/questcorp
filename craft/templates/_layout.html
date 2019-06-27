@@ -1,7 +1,9 @@
 {% set seoTitle = globalSeo.seo_title %}
 {% set seoDescription = globalSeo.seo_description %}
 {% set seoKeywords = globalSeo.seo_keywords %}
-{% set location = craft.geoCookie.location() %}
+{% set location = geocookie() %}
+
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -49,6 +51,11 @@
   {% include "_includes/_footer.html" %}
   {% include "_includes/modal-form.html" %}
   {% include "_includes/modal-cities.html" %}
+
+  {% if currentSite.id != 1 %}
+  {% include "_includes/modal-sorry.html" %}
+  {% endif %}
+
   <div class="clearfix"></div>
   {% include "_includes/mobile-menu.html" %}
   {% include "_includes/_js.html" %}

@@ -33,7 +33,13 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/assets/favicon/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
-  {% include "_includes/_styles.html" %}
+  <link rel="stylesheet" type="text/css" href="https://questcorp.events/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://questcorp.events/assets/css/sidr.dark.min.css">
+  <link rel="stylesheet" type="text/css" href="https://questcorp.events/assets/css/fullPage.min.css">
+  <link rel="stylesheet" type="text/css" href="https://questcorp.events/assets/css/swiper.min.css">
+  <link rel="stylesheet" type="text/css" href="https://questcorp.events/assets/fancybox/jquery.fancybox.min.css">
+  <link rel="stylesheet" type="text/css" href="https://questcorp.events/assets/css/style.css">
   <link type="text/css" rel="stylesheet" href="https://questcorp.events/assets/lightslider/css/lightslider.css" />
   <link rel="stylesheet" type="text/css" href="https://questcorp.events/assets/css/fr-landing.css">
   {{ globalanalyticsHeader.textUnformatted|raw }}
@@ -105,6 +111,10 @@ jQuery(document).ready(function ($) {
     }
   });
 
+  $(".btn-rasschet, .btn-sobst, .call-us-btn").on('click', function() {
+   $('#change-title').text($(this).text());
+   $('#change-msg').val($(this).text());
+  });
 });
 $(window).on('beforeunload', function() {
   //$(window).scrollTop(0);
@@ -163,7 +173,7 @@ $(window).on('load', function(){
             <input type="hidden" name="redirect" value="{{ 'contact/thanks'|hash }}">
             <input type="hidden" name="message[Страница пользователя]" value="{{ craft.request.getUrl() }}" >
             <input type="hidden" name="message[Локация]" value="{{ location.city }}" >
-            <input type="hidden" name="message[Название формы]" value="Форма: Перезвоните мне">
+            <input type="hidden" id="change-msg" name="message[Название формы]" value="Форма: Перезвоните мне">
             <input type="hidden" name="fromEmail" value="no-reply@questcorp.events">
             <p>
               <span class="wpcf7-form-control-wrap name">
