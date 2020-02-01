@@ -37,8 +37,6 @@
         {% if logo %}
         <img class="logo__img" src="{{ logo.getUrl() }}" alt="logo">
         {% endif %}
-
-
       </a>
     </div><!--/.nav-collapse -->
 
@@ -97,7 +95,7 @@ data-paroller-factor="-0.1">
         </div>
       </div>
       <div class="col-md-12">
-        {% include "_landing/_landing_form" with { form_agreement_below: true, form_name: block.zagolovokForm1 } %}
+        {% include "_landing/_landing_form" with { form_agreement_below: true, form_name: block.zagolovokForm1, form_metrica: 'ng_kvest1' } %}
 
       </div>
       <div class="col-md-12">
@@ -192,7 +190,7 @@ data-paroller-factor-xs="0.2">
         </div>
       </div>
       <div class="col-md-12">
-        {% include "_landing/_landing_form" with { form_agreement_below: true, form_name: block.zagolovokForm2 } %}
+        {% include "_landing/_landing_form" with { form_agreement_below: true, form_name: block.zagolovokForm2, form_metrica: 'ng_kvest2' } %}
       </div>
       <div class="col-md-12">
         <p>{{ block.tekstForm2 }}</p>
@@ -263,7 +261,7 @@ data-paroller-factor-xs="0.2">
         </div>
       </div>
       <div class="col-md-12">
-        {% include "_landing/_landing_form" with { form_agreement_below: true, form_name: block.zagolovokForm3 } %}
+        {% include "_landing/_landing_form" with { form_agreement_below: true, form_name: block.zagolovokForm3, form_metrica: 'ng_kvest3' } %}
       </div>
       <div class="col-md-12">
         <p>{{ block.tekstForm3 }}</p>
@@ -336,7 +334,7 @@ data-paroller-factor-xs="0.2">
         </div>
       </div>
       <div class="col-md-12">
-        {% include "_landing/_landing_form" with { form_agreement_below: true, form_name: block.zagolovokForm4 } %}
+        {% include "_landing/_landing_form" with { form_agreement_below: true, form_name: block.zagolovokForm4, form_metrica: 'ng_kvest4' } %}
       </div>
       <div class="col-md-12">
         <p>{{ block.tekstForm4 }}</p>
@@ -517,7 +515,7 @@ data-paroller-factor-lg="-0.2">
       </div>
       <div class="col-sm-6 col-lg-4 col-md-4 col-xs-12 nav-widget">
         <h6 id="order">Закажите звонок менеджера</h6>
-        {% include "_landing/_landing_form" with { form_agreement_above: true, form_name: block.zagolovok12 } %}
+        {% include "_landing/_landing_form" with { form_agreement_above: true, form_name: block.zagolovok12, form_metrica: 'ng_kvest5' } %}
       </div>
       <div class="col-sm-6 col-lg-8 col-md-8 col-xs-12">
         <div class="contact-wrap ">
@@ -546,6 +544,7 @@ data-paroller-factor-lg="-0.2">
     </div>
   </div>
 </div>
+<a href="https://wa.me/79853450223" target="_blank" class="whatsapp-button"><img src="https://questcorp.events/assets/img/WhatsApp.svg" alt="WhatsApp" class="whatsapp-button-img"><span>Задайте вопрос онлайн</span></a>
 </footer>
 
 {% endif %}

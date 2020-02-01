@@ -30,7 +30,7 @@
       <div class="head-right">
         <a class="head-phone" href="tel:{{ block.telefon|raw|striptags|replace('/\D+/', '') }}">{{ block.telefon|raw }}</a>
         <a class="call-us-btn" href="#" data-toggle="modal" data-target="#modal-submit">Заказать звонок</a><br>
-        <a class="text-us-btn" href="https://wa.me/79853450223" target="_blank">Или напишите нам в <span>WhatsApp <i class="fab fa-whatsapp"></i></span></a>
+        <a class="text-us-btn" href="https://wa.me/{{ globalWhatsapp.textUnformatted }}" target="_blank">Или напишите нам в <span>WhatsApp <i class="fab fa-whatsapp"></i></span></a>
       </div>
 
 
@@ -283,6 +283,7 @@ data-paroller-factor-xs="0.2">
 {% elseif block.type == 'sektsiyaSIkonkoy4' %}
 <div class="">
   <div id="sektsiya6" class="container section fp-auto-height p-auto-height-responsive">
+    {% if block.tekst4|length %}
     <div class="row margin-lg-25b margin-md-25b margin-sm-25b margin-xs-25b">
       <div class="col-md-9">
         {{ block.tekst4 }}
@@ -294,6 +295,7 @@ data-paroller-factor-xs="0.2">
         {% endif %}
       </div>
     </div>
+    {% endif %}
     {% if entry.landingKvesty4 | length %}
     <div class="row">
       <div class="col-sm-12">
@@ -430,7 +432,7 @@ data-paroller-factor-xs="0.2">
         <div class="col-md-4 col-sm-6 col-xs-6 col-portfolio-item">
           {% set image = fotootchet.izobrazhenie.one() %}
           {% if image %}
-          <div class="portfolio-item" data-blockid="{{ fotootchet.id }}" id="portfolio-item-{{ fotootchet.id }}" >
+          <div class="portfolio-item" data-blockid="{{ fotootchet.id }}" data-pageid="{{ entry.id }}" id="portfolio-item-{{ fotootchet.id }}" >
             <img class="" src="{{ image.getUrl('image370x275') }}" alt="Фотография {{ fotootchet.id }}" >
             <div class="portfolio-info"><span>Смотреть</span></div>
           </div>
@@ -562,6 +564,7 @@ data-paroller-factor-lg="-0.2">
     </div>
   </div>
 </div>
+<a href="https://wa.me/{{ globalWhatsapp.textUnformatted }}" target="_blank" class="whatsapp-button"><img src="https://questcorp.events/assets/img/WhatsApp.svg" alt="WhatsApp" class="whatsapp-button-img"><span>Задайте вопрос онлайн</span></a>
 </footer>
 
 {% endif %}

@@ -705,7 +705,8 @@ ol,ul{
   color: #fff;
 }
 .whatsapp-button span{
-
+  font-size: 16px;
+  font-weight: normal;
 }
 .whatsapp-button-img{
   max-width: 60px;
@@ -7911,4 +7912,10 @@ p.price{
   .monthly-day-event>.monthly-day-number:hover {
     color: #fff;
   }
+}
+form input:not([type=submit]){
+  color: #333;
+}
+.questroom-footer-content form input:not([type=submit]){
+  color: #fff;
 }

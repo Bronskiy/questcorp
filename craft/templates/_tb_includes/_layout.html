@@ -83,11 +83,12 @@ jQuery(document).ready(function ($) {
   var portfolioModal = $('#ng-portfolio');
   $('.portfolio-item').on('click',function(){
     var blockId = $(this).attr('data-blockid');
+    var pageId = $(this).attr('data-pageid');
     //  console.log('clicked '+blockId);
     if(blockId){
       $.ajax({
         type:"GET",
-        url:"/api/portfolio-tb/"+blockId+".json",
+        url:"/api/portfolio-tb/"+blockId+"/"+pageId+".json",
         success:function(res){
           if(res){
             var html_to_append = '';
