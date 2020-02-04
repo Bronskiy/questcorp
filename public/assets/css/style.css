@@ -3140,6 +3140,7 @@ a:visited {
   }
   #header .top-menu li:last-of-type{
     padding-right: 0px;
+    border: 0;
   }
 }
 #header .top-menu li a {
@@ -7918,4 +7919,7 @@ form input:not([type=submit]){
 }
 .questroom-footer-content form input:not([type=submit]){
   color: #fff;
+}
+.phone-required{
+  display: none;;
 }

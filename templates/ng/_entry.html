@@ -1,0 +1,552 @@
+{% extends "_landing/_landing_layout" %}
+{% set title = entry.title %}
+{% set description = entry.seo_description %}
+{% set keywords = entry.seo_keywords %}
+
+{% block content %}
+
+{% for block in entry.landingSections.all() %}
+{% if block.type == 'topMenyu' %}
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="top-mobile-header">
+
+      <div class="head-center">
+        <a class="" href="tel:{{ block.telefon|replace('/\D+/', '') }}"><i class="fa fa-phone" aria-hidden="true"></i> {{ block.telefon }}</a>
+        <span class="schedule">{{ block.grafikRaboty|raw }}</span>
+      </div>
+    </div>
+
+    <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+      {% set mobileLogo = entry.landingMobilNyyLogotip.one() %}
+      {% if mobileLogo %}
+      <img class="mobile_logo__img" src="{{ mobileLogo.getUrl() }}" alt="mobile logo">
+      {% endif %}
+      <div class="head-left">
+        <a class="" href="tel:{{ block.telefon|replace('/\D+/', '') }}"><i class="fa fa-phone" aria-hidden="true"></i> {{ block.telefon }}</a>
+        <span class="schedule">{{ block.grafikRaboty|raw }}</span>
+      </div>
+      <a href="/" class="navbar-brand">
+        {% set logo = entry.landingLogotip.one() %}
+        {% if logo %}
+        <img class="logo__img" src="{{ logo.getUrl() }}" alt="logo">
+        {% endif %}
+      </a>
+    </div><!--/.nav-collapse -->
+
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="#sektsiya9">О нас</a></li>
+        <li><a href="#contacts-footer">Контакты</a></li>
+        <a href="#order" class="ng-btn">Заявка</a>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{% elseif block.type == 'sektsiya1' %}
+<div id="sektsiya1" class="post-img-wrap single-post parallax-window"
+{% set image = block.izobrazhenie1.one() %}
+{% if image %}
+style="background: url('{{ image.getUrl() }}') no-repeat center;
+{% endif %}
+background-size: cover;"
+data-paroller-factor="-0.1">
+<div class="content ">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-2 col-md-8">
+
+        {{ block.zagolovok1 }}
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+{% elseif block.type == 'sektsiya2' %}
+<div id="sektsiya2" class="container section fp-auto-height p-auto-height-responsive">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="headlines-wrap">
+        <h2>{{ block.zagolovok2 }}</h2>
+      </div>
+    </div>
+    <div class="col-md-offset-3 col-md-6">
+      <div>{{ block.tekst2 }}</div>
+    </div>
+  </div>
+</div>
+</div>
+
+{% elseif block.type == 'forma1' %}
+<div id="forma1" class="request-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="headlines-wrap">
+          <h3>{{ block.zagolovokForm1 }}</h3>
+        </div>
+      </div>
+      <div class="col-md-12">
+        {% include "_landing/_landing_form" with { form_agreement_below: true, form_name: block.zagolovokForm1, form_metrica: 'ng_kvest1', form_agreement_by_button: false, form_agreement_above: false } %}
+
+      </div>
+      <div class="col-md-12">
+        <p>{{ block.tekstForm1 }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% elseif block.type == 'sektsiya3' %}
+<div id="sektsiya3" class="post-img-wrap single-post parallax-window"
+{% set image = block.izobrazhenie3.one() %}
+{% if image %}
+style="background: url('{{ image.getUrl() }}') no-repeat center;
+{% endif %}
+background-size: cover;"
+data-paroller-factor="0.5"
+data-paroller-factor-xs="0.2">
+
+<div class="content ">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-3">
+        {{ block.tekst3 }}
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+{% elseif block.type == 'sektsiya4' %}
+<div class="gray-section">
+  <div id="quest-section sektsiya4" class="container section fp-auto-height p-auto-height-responsive">
+    <div class="row">
+      <div class="col-md-offset-2 col-md-8">
+        <div class="headlines-wrap">
+          {{ block.tekst4 }}
+        </div>
+      </div>
+    </div>
+    {% if entry.landingKvesty | length %}
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="container-fluid">
+          <div class="row posts-list posts-list-infinity">
+            {% for quest in entry.landingKvesty.all() %}
+            <div class="col-xs-12 col-sm-6 post-item-isotope">
+              <div class="post-item grid2 ">
+                {% set image = quest.izobrazhenieQuest.one() %}
+                {% if image %}
+                <img src="{{ image.getUrl('izobrazhenie555X375') }}" alt="{{ quest.nazvanieQuest }}" class="s-img-switch">
+                {% else %}
+                <img src="https://via.placeholder.com/555x375" alt="{{ quest.nazvanieQuest }}" class="s-img-switch">
+                {% endif %}
+                <div class="content">
+                  <i class="corner-1"></i><i class="corner-2"></i><i class="corner-3"></i><i class="corner-4"></i>
+                  <div class="a-table">
+                    <div class="info">
+                      {% for row in quest.osobennostiQuest %}
+                      <div class="info-item"><i class="fa fa-users" aria-hidden="true"></i><p class="info-item-title"></p><p>{{ row.kolVo }}</p><p></p></div>
+                      <div class="info-item"><i class="fa fa-clock-o" aria-hidden="true"></i><p class="info-item-title"></p><p>{{ row.prodolzhitelNost }}</p><p></p></div>
+                      <div class="info-item"><i class="fa fa-rocket" aria-hidden="true"></i><p class="info-item-title"></p><p>{{ row.tip }}</p><p></p></div>
+                      <div class="info-item"><i class="fa fa-puzzle-piece" aria-hidden="true"></i><p class="info-item-title"></p><p>{{ row.tematika }}</p><p></p></div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  <div class="bottom-content">
+                    <h3 class="post-title">{{ quest.nazvanieQuest }}</h3>
+                    <div class="address contact-wrap-item">
+                      <span class="contact-item">{{ quest.opisanieQuest|striptags|slice(0, 300) }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% elseif block.type == 'forma2' %}
+<div id="forma2" class="request-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="headlines-wrap">
+          <h3>{{ block.zagolovokForm2 }}</h3>
+        </div>
+      </div>
+      <div class="col-md-12">
+        {% include "_landing/_landing_form" with { form_agreement_below: true, form_name: block.zagolovokForm2, form_metrica: 'ng_kvest2', form_agreement_by_button: false, form_agreement_above: false } %}
+      </div>
+      <div class="col-md-12">
+        <p>{{ block.tekstForm2 }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% elseif block.type == 'sektsiya5' %}
+<div id="sektsiya5" class="container section fp-auto-height p-auto-height-responsive">
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8">
+      <div class="headlines-wrap">
+        <h2>{{ block.zagolovok5 }}</h2>
+        <div>{{ block.tekst5 }}</div>
+      </div>
+    </div>
+  </div>
+  {% if entry.landingIgry | length %}
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="container-fluid">
+        <div class="posts-list posts-list-infinity row">
+          {% for game in entry.landingIgry.all() %}
+          <div class="col-xs-12 col-sm-6 post-item-isotope">
+            <div class="post-item grid2 ">
+              {% set image = game.izobrazhenieGame.one() %}
+              {% if image %}
+              <img src="{{ image.getUrl('izobrazhenie555X375') }}" alt="{{ game.nazvanieGame }}" class="s-img-switch">
+              {% else %}
+              <img src="https://via.placeholder.com/555x375" alt="{{ game.nazvanieGame }}" class="s-img-switch">
+              {% endif %}
+              <div class="content">
+                <i class="corner-1"></i><i class="corner-2"></i><i class="corner-3"></i><i class="corner-4"></i>
+                <div class="a-table">
+                  <div class="info">
+                    {% for row in game.osobennostiGame %}
+                    <div class="info-item"><i class="fa fa-users" aria-hidden="true"></i><p class="info-item-title"></p><p>{{ row.kolVo }}</p><p></p></div>
+                    <div class="info-item"><i class="fa fa-clock-o" aria-hidden="true"></i><p class="info-item-title"></p><p>{{ row.prodolzhitelNost }}</p><p></p></div>
+                    <div class="info-item"><i class="fa fa-rocket" aria-hidden="true"></i><p class="info-item-title"></p><p>{{ row.tip }}</p><p></p></div>
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class="bottom-content">
+                  <h3 class="post-title">{{ game.nazvanieGame }}</h3>
+                  <div class="address contact-wrap-item">
+                    <span class="contact-item">{{ game.opisanieGame|striptags|slice(0, 300) }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+{% elseif block.type == 'forma3' %}
+<div id="forma3" class="request-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="headlines-wrap">
+          <h3>{{ block.zagolovokForm3 }}</h3>
+        </div>
+      </div>
+      <div class="col-md-12">
+        {% include "_landing/_landing_form" with { form_agreement_below: true, form_name: block.zagolovokForm3, form_metrica: 'ng_kvest3', form_agreement_by_button: false, form_agreement_above: false } %}
+      </div>
+      <div class="col-md-12">
+        <p>{{ block.tekstForm3 }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% elseif block.type == 'sektsiya6' %}
+<div class="gray-section">
+  <div id="sektsiya6" class="container section fp-auto-height p-auto-height-responsive">
+    <div class="row">
+      <div class="col-md-offset-2 col-md-8">
+        <div class="headlines-wrap">
+          <h2>{{ block.zagolovok6 }}</h2>
+          <div>{{ block.tekst6 }}</div>
+        </div>
+      </div>
+    </div>
+    {% if entry.landingAnimatsiya | length %}
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="container-fluid">
+          <div class="posts-list posts-list-infinity row">
+            {% for animation in entry.landingAnimatsiya.all() %}
+            <div class="col-xs-12 col-sm-6 post-item-isotope">
+              <div class="post-item grid2 ">
+                {% set image = animation.izobrazhenieAnimation.one() %}
+                {% if image %}
+                <img src="{{ image.getUrl('izobrazhenie555X375') }}" alt="{{ animation.nazvanieAnimation }}" class="s-img-switch">
+                {% else %}
+                <img src="https://via.placeholder.com/555x375" alt="{{ animation.nazvanieAnimation }}" class="s-img-switch">
+                {% endif %}
+                <div class="content">
+                  <i class="corner-1"></i><i class="corner-2"></i><i class="corner-3"></i><i class="corner-4"></i>
+                  <div class="a-table">
+                    <div class="info">
+                      {% for row in animation.osobennostiAnimation %}
+                      <div class="info-item"><i class="fa fa-users" aria-hidden="true"></i><p class="info-item-title"></p><p>{{ row.kolVo }}</p><p></p></div>
+                      <div class="info-item"><i class="fa fa-clock-o" aria-hidden="true"></i><p class="info-item-title"></p><p>{{ row.prodolzhitelNost }}</p><p></p></div>
+                      <div class="info-item"><i class="fa fa-rocket" aria-hidden="true"></i><p class="info-item-title"></p><p>{{ row.tip }}</p><p></p></div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  <div class="bottom-content">
+                    <h3 class="post-title">{{ animation.nazvanieAnimation }}</h3>
+                    <div class="address contact-wrap-item">
+                      <span class="contact-item">{{ animation.opisanieAnimation|striptags|slice(0, 300) }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% elseif block.type == 'forma4' %}
+<div id="forma4" class="request-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="headlines-wrap">
+          <h3>{{ block.zagolovokForm4 }}</h3>
+        </div>
+      </div>
+      <div class="col-md-12">
+        {% include "_landing/_landing_form" with { form_agreement_below: true, form_name: block.zagolovokForm4, form_metrica: 'ng_kvest4', form_agreement_by_button: false, form_agreement_above: false } %}
+      </div>
+      <div class="col-md-12">
+        <p>{{ block.tekstForm4 }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% elseif block.type == 'sektsiya7' %}
+<div id="sektsiya7" class="container section fp-auto-height p-auto-height-responsive">
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8">
+      <div class="headlines-wrap">
+        <h2>{{ block.zagolovok7 }}</h2>
+        <div>{{ block.tekst7 }}</div>
+      </div>
+    </div>
+  </div>
+  {% if block.video7 | length %}
+  <div class="row video-wrapper">
+    {% for row in block.video7 %}
+    <div class="col-md-4 video-item">
+      {{ row.kodVideo|raw }}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if entry.landingPortfolio | length %}
+  <div class="col-md-12">
+    <div class="row">
+      {% for fotootchet in entry.landingPortfolio.all() %}
+      <div class="col-md-4 col-sm-6 col-xs-6 col-portfolio-item">
+        {% set image = fotootchet.izobrazhenie.one() %}
+        {% if image %}
+        <div class="portfolio-item" data-blockid="{{ fotootchet.id }}" id="portfolio-item-{{ fotootchet.id }}" >
+          <img class="" src="{{ image.getUrl('image370x275') }}" alt="Фотография {{ fotootchet.id }}" >
+          <div class="portfolio-info"><span>Смотреть</span></div>
+        </div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+</div>
+
+{% elseif block.type == 'sektsiya8' %}
+<div class="gray-section">
+  <div id="sektsiya8" class="container section fp-auto-height p-auto-height-responsive">
+    <div class="row">
+      <div class="col-md-offset-2 col-md-8">
+        <div class="headlines-wrap">
+          <h2>{{ block.zagolovok8 }}</h2>
+          <div>{{ block.tekst8 }}</div>
+        </div>
+      </div>
+    </div>
+    {% if entry.landingUslugi | length %}
+    {% for row in entry.landingUslugi|batch(2) %}
+    <div class="row wrap{% if loop.index0 is divisible by(2) %}-odd{% endif %}">
+
+      {% for service in row %}
+      <div class="col-md-6 col-sm-12 col-xs-12 item">
+        <h3>{{ service.nazvanieService }}</h3>
+
+        {% set image = service.izobrazhenieService.one() %}
+        {% if image %}
+        <img src="{{ image.getUrl('izobrazhenie285X285') }}" alt="" class="">
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+
+
+    {% endif %}
+  </div>
+</div>
+
+{% elseif block.type == 'sektsiya9' %}
+<div id="sektsiya9" class="container section fp-auto-height p-auto-height-responsive">
+  <div class="row">
+    <div class="col-md-offset-3 col-md-6">
+      <div class="headlines-wrap">
+        <h2>{{ block.zagolovok9 }}</h2>
+      </div>
+    </div>
+    {% if entry.landingAbout | length %}
+    <div class="col-md-12">
+      <div class="row icons">
+        {% for item in entry.landingAbout.all() %}
+        <div class="col-sm-6 col-md-3 icon-item">
+          {% set image = item.ikonka.one() %}
+          {% if image %}
+          <img src="{{ image.getUrl() }}" alt="" >
+          {% else %}
+          <img src="https://via.placeholder.com/48x48" alt="">
+          {% endif %}
+          <div class="content">
+            <h5>{{ item.zagolovok }}</h5>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+    <div class="col-md-12">
+      <a href="/about" class="ng-btn">Подробно о нас</a>
+    </div>
+  </div>
+</div>
+
+{% elseif block.type == 'sektsiya10' %}
+<div class="gray-section">
+  <div id="sektsiya10" class="container section fp-auto-height p-auto-height-responsive">
+    <div class="row">
+      <div class="col-md-offset-3 col-md-6">
+        <div class="headlines-wrap">
+          <h2>{{ block.zagolovok10 }}</h2>
+        </div>
+      </div>
+    </div>
+    {% if block.skanyOtzyvov10 | length %}
+    <div class="otzyvi-slider">
+      <ul id="lightSlider">
+        {% for asset in block.skanyOtzyvov10.all() %}
+        <li data-thumb="{{ asset.url('image370x275') }}">
+          <img src="{{ asset.url() }}" />
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% elseif block.type == 'sektsiya11' %}
+<div id="sektsiya11" class="post-img-wrap single-post parallax-window--disabled"
+{% set image = block.izobrazhenie11.one() %}
+{% if image %}
+style="background: url('{{ image.getUrl() }}') no-repeat center;
+{% endif %}
+background-size: cover;"
+data-paroller-factor="-0.2">
+
+<div class="content ">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2>{{ block.zagolovok11 }}</h2>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+{% elseif block.type == 'sektsiya12' %}
+<footer id="contacts-footer" class="questroom-footer post-img-wrap parallax-window--disabled"
+{% set image = block.izobrazhenie12.one() %}
+{% if image %}
+style="background: url('{{ image.getUrl() }}') no-repeat center;
+{% endif %}
+background-size: cover;
+background-attachment: fixed;"
+data-paroller-factor="-0.2"
+data-paroller-factor-xs="-0.2"
+data-paroller-factor-sm="-0.2"
+data-paroller-factor-md="-0.2"
+data-paroller-factor-lg="-0.2">
+
+<div class="questroom-footer-content">
+  <div class="container">
+    <div class="row margin-lg-40t margin-sm-40t padding-md-10t">
+      <div class="col-md-12">
+        <h2>{{ block.zagolovok12 }}</h2>
+      </div>
+      <div class="col-sm-6 col-lg-4 col-md-4 col-xs-12 nav-widget">
+        <h6 id="order">Закажите звонок менеджера</h6>
+        {% include "_landing/_landing_form" with { form_agreement_above: true, form_name: block.zagolovok12, form_metrica: 'ng_kvest5', form_agreement_by_button: false, form_agreement_below: false } %}
+      </div>
+      <div class="col-sm-6 col-lg-8 col-md-8 col-xs-12">
+        <div class="contact-wrap ">
+          <div class="description">
+            <h6>Телефоны:</h6>
+            <p><a href="tel:+{{ block.telefon1|lower|replace('/[^0-9]/', '') }}">{{ block.telefon1 }}</a></p>
+            <p><a href="tel:+{{ block.telefon2|lower|replace('/[^0-9]/', '') }}">{{ block.telefon2 }}</a></p>
+            <h6>Email:</h6>
+            <p><a href="mailto:{{ block.email12 }}">{{ block.email12 }}</a></p>
+            <h6>Наш адрес:</h6>
+            <p>{{ block.adres12 }}</p>
+            <h6>Сайт:</h6>
+            <p><a href="/">https://questcorp.events</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="questroom-footer-bottom-content">
+  <div class="row margin-lg-110t margin-sm-110t padding-md-10t">
+    <div class="col-md-12 copyright-info">
+      <p>ОГРН {{ block.ogrn12 }}</p>
+      <p><a href="/politika">Политика конфиденциальности</a></p>
+      <p>Copyright {{ now|date('Y') }} {{ craft.app.request.serverName | ucfirst }}. Все права защищены  •  Сайт создан студией <a href="https://www.iconicline.com/ru">Iconicline</a></p>
+    </div>
+  </div>
+</div>
+<a href="https://wa.me/79853450223" target="_blank" class="whatsapp-button"><img src="https://questcorp.events/assets/img/WhatsApp.svg" alt="WhatsApp" class="whatsapp-button-img"><span>Задайте вопрос онлайн</span></a>
+</footer>
+
+{% endif %}
+{% endfor %}
+{% endblock %}

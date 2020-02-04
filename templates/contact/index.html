@@ -1,0 +1,104 @@
+{% extends "_layout" %}
+{% set title = entry.title %}
+{% set description = entry.seo_description %}
+{% set keywords = entry.seo_keywords %}
+{% block content %}
+<div class="page-wrap multipage">
+  <section class="section container multipage" id="our-quests">
+    <div class="row margin-lg-125t margin-sm-125t padding-md-10t margin-lg-25b margin-sm-25b padding-md-10b">
+      <div class="col-sm-12 margin-lg-25b margin-sm-10b ">
+        <div class="headlines-wrap">
+          <div class="subtitle">{{ entry.title }}<div class="separator default"></div></div>
+          <h2 class="title">С нами можно связаться в любое время!</h2>
+        </div>
+      </div>
+      <div class="col-sm-12 col-lg-4 col-md-4 col-xs-12">
+        <div class="row">
+          <div class="col-sm-12 col-lg-12 col-md-12 col-xs-12">
+            <div class="contact-wrap ">
+              <h5 class="title">Телефоны:</h5>
+              <div class="description">
+                <p><a href="tel:{{ globalPhone1.textFormatted }}">{{ globalPhone1.textUnformatted }}</a></p>
+                <p><a href="tel:{{ globalPhone2.textFormatted }}">{{ globalPhone2.textUnformatted }}</a></p>
+              </div>
+            </div>
+            <div class="contact-wrap">
+              <h5 class="title">Email:</h5>
+              <div class="description">
+                <p><a href="mailto:{{ globalEmail.textFormatted }}">{{ globalEmail.textFormatted }}</a></p>
+              </div>
+            </div>
+            <div class="contact-wrap margin-lg-20t margin-lg-55b margin-md-25b ">
+              <h5 class="title">Наш адрес:</h5>
+              <div class="description">
+                <p>{{ globalAddress.textFormatted }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-lg-8 col-md-8 col-xs-12">
+        <div class="wpcf7">
+          {% macro errorList(errors) %}
+          {% if errors %}
+          <div id="alert-msg-contact" class="alert-msg uk-margin-bottom">
+            <ul class="errors">
+              {% for error in errors %}
+              <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+          {% endmacro %}
+
+          {% from _self import errorList %}
+          <form method="post" id="contact_form" class="wpcf7-form" action="" accept-charset="UTF-8">
+            {{ csrfInput() }}
+            <input type="hidden" name="action" value="contact-form/send">
+            <input type="hidden" name="redirect" value="{{ 'contact/thanks'|hash }}">
+            <input type="hidden" name="message[Страница пользователя]" value="{{ craft.app.request.absoluteUrl() }}" >
+            <input type="hidden" name="message[Локация]" value="{{ location.city }}" >
+            <p>
+              <span class="wpcf7-form-control-wrap name">
+                <input class="wpcf7-form-control wpcf7-text" id="from-name" type="text" name="fromName" value="{{ message.fromName ?? '' }}" placeholder="Ваше имя" required="required">
+                {{ message is defined and message ? errorList(message.getErrors('fromName')) }}
+              </span>
+              <br>
+              <span class="wpcf7-form-control-wrap email">
+                <input class="wpcf7-form-control wpcf7-text" id="fromEmail" type="email" name="fromEmail" placeholder="Email" value="{% if message is defined %}{{ message.fromEmail }}{% endif %}">
+                {{ message is defined and message ? errorList(message.getErrors('fromEmail')) }}
+              </span>
+              <br>
+              <span class="wpcf7-form-control-wrap email">
+                <input class="wpcf7-form-control wpcf7-text" type="text" name="message[Телефон]" placeholder="Телефон" required="required" >
+              </span>
+              <br>
+              <span class="wpcf7-form-control-wrap email">
+                <input class="wpcf7-form-control wpcf7-text datepicker" type="text" name="message[Дата]" placeholder="Дата мероприятия" required="required" >
+              </span>
+              <br>
+              <span class="wpcf7-form-control-wrap email">
+                <input class="wpcf7-form-control wpcf7-text" type="text" name="message[Тема]" placeholder="Тема" required="required">
+              </span>
+              <br>
+              <span class="wpcf7-form-control-wrap message">
+                <textarea placeholder="Сообщение" class="wpcf7-form-control wpcf7-textarea" rows="3" cols="30" name="message[body]" required="required">{% if message is defined %}{{ message.message }}{% endif %}</textarea>
+              </span>
+              <br>
+              <span class="wpcf7-form-control-wrap checkbox-agreement">
+                <label class="control-label required-label"><input type="checkbox" required=""> Я согласен на обработку персональных данных.</label>
+              </span>
+              <br>
+              <div class="submit-wrap"><input type="submit" value="Отправить" class=""></div>
+            </p>
+
+          </form>
+        </div>
+      </div>
+      <div class="col-sm-12 col-lg-12 col-md-12 col-xs-12 margin-sm-30t margin-sm-30b margin-lg-30b margin-lg-60t">
+        {{ globalMap.textUnformatted|raw }}
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

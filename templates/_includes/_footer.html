@@ -1,0 +1,57 @@
+<footer class="questroom-footer ">
+  <div class="questroom-footer-content">
+    <div class="container">
+      <div class="row margin-lg-40t margin-sm-40t padding-md-10t">
+        <div class="col-sm-6 col-lg-3 col-md-3 col-xs-12 nav-widget">
+          <h5 class="title">Услуги</h5>
+          <ul>
+            {% for entry in craft.entries.section('services').limit(5).all() %}
+            <li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-sm-6 col-lg-3 col-md-3 col-xs-12 nav-widget">
+          <h5 class="title">Навигация</h5>
+          <ul>
+            {% nav entry in craft.entries.section('footerMenu').all() %}
+            <li><a href="{{ entry.mainMenuLink }}">{{ entry.title }}</a></li>
+            {% endnav %}
+          </ul>
+        </div>
+        <div class="col-sm-6  col-lg-3  col-md-3  col-xs-12">
+          <h5 class="title">Связаться с нами</h5>
+          <div class="contact-wrap ">
+            <div class="description">
+              <p><a href="tel:{{ globalPhone1.textFormatted }}">{{ globalPhone1.textUnformatted }}</a></p>
+              <p><a href="tel:{{ globalPhone2.textFormatted }}">{{ globalPhone2.textUnformatted }}</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6  col-lg-3  col-md-3  col-xs-12">
+          <div class="questroom-footer-social">
+            <div class="questroom-social-list">
+              <h5 class="title">Мы в соцсетях</h5>
+              <ul class="socials socials-about list-unstyled list-inline">
+                <li><a href="{{ globalVkontakte.textUnformatted }}"><i class="fa fa-vk"></i></a></li>
+                <li><a href="{{ globalFacebook.textUnformatted }}"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="{{ globalInstagram.textUnformatted }}"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="{{ globalYoutube.textUnformatted }}"><i class="fa fa-youtube"></i></a></li>
+                <li><a href="{{ globalGooglePlus.textUnformatted }}"><i class="fa fa-google-plus"></i></a></li>
+                <li><a href="{{ globalTwitter.textUnformatted }}"><i class="fa fa-twitter"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="questroom-footer-bottom-content">
+    <div class="row  margin-lg-40t margin-sm-40t padding-md-10t">
+      <div class="col-md-12 copyright-info">
+        <p><a href="/politika">Политика конфиденциальности</a></p>
+        <p>Copyright {{ "now"|date('Y') }} {{ craft.app.request.serverName | ucfirst }}. Все права защищены  •  Сайт создан студией <a href="https://www.iconicline.com/ru">Iconicline</a></p>
+      </div>
+    </div>
+  </div>
+  <a href="https://wa.me/{{ globalWhatsapp.textUnformatted }}" target="_blank" class="whatsapp-button"><img src="https://questcorp.events/assets/img/WhatsApp.svg" alt="WhatsApp" class="whatsapp-button-img"><span>Задайте вопрос онлайн</span></a>
+</footer>

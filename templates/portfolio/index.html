@@ -1,0 +1,88 @@
+{% extends "_layout" %}
+
+{% if tag is defined %}
+
+{% set tag = craft.tags.slug(tag).one() %}
+{% set title = tag.title %}
+
+{% set entriesToShow = craft.entries.section('portfolio').relatedTo(tag) %}
+
+{% elseif category is defined %}
+
+{% set title = category.title %}
+{% set entriesToShow = craft.entries.relatedTo(category) %}
+
+{% else %}
+{% set title = "Портфолио" %}
+
+{% set entriesToShow = craft.entries.section('portfolio') %}
+
+{% endif %}
+{% block content %}
+
+<div class="page-wrap multipage">
+  <section class="section container multipage" id="our-quests">
+    <div class="row margin-lg-125t margin-sm-80t padding-md-10t margin-lg-125b margin-sm-40b padding-md-10b">
+      <div class="col-sm-12">
+        <div class="headlines-wrap margin-lg-65b">
+          {% if tag is defined %}
+            <div class="subtitle">{{ tag.title }}<div class="separator default"></div></div>
+          {% endif %}
+          <h2 class="title">Портфолио</h2>
+        </div>
+        <div class="sort-tags">
+          {% set tags = craft.tags.group('portfolio') %}
+          <a {% if tag is not defined %}class="active"{% endif %} href="/portfolio">Все</a>
+
+          {% for tag in tags.all() %}
+          {% set count = craft.entries.section('portfolio').relatedTo(tag).count() %}
+          {% if count > 0 %}
+          <a {% if title == tag.title %}class="active"{% endif %} href="{{ url('portfolio/tags/'~tag.slug) }}">{{ tag.title }}</a>
+          {% endif %}
+          {% endfor %}
+        </div>
+        <div class="container">
+          <div class="posts-list row">
+            {% for entry in entriesToShow.all() %}
+            <div class="col-xs-12 col-sm-6 col-md-4 post-item-isotope ">
+              <div class="post-item grid3 s-back-switch">
+                {% set image = entry.portfolioImage.one() %}
+                {% if image %}
+                <img src="{{ image.getUrl('image370x275') }}" alt="{{ entry.title }}" class="s-img-switch">
+                {% else %}
+                <img src="https://via.placeholder.com/370x275" alt="{{ entry.title }}" class="s-img-switch">
+                {% endif %}
+                <div class="content">
+                  <i class="corner-1"></i>
+                  <i class="corner-2"></i>
+                  <i class="corner-3"></i>
+                  <i class="corner-4"></i>
+                  <div class="a-table"></div>
+                  {% for block in entry.portfolioClient.all() %}
+                  {% if block.clientLogo %}
+                  {% set image = block.clientLogo.one() %}
+                  <div class="top-content">
+                    {% if image %}
+                    <img src="{{ image.getUrl('logo200px') }}">
+                    {% else %}
+                    <!-- <img src="https://via.placeholder.com/200x200"> -->
+                    {% endif %}
+                  </div>
+                  {% endif %}
+                  {% endfor %}
+                  <div class="bottom-content">
+                    <h3 class="post-title">{{ entry.title }}</h3>
+                    <a href="{{ entry.url }}" class="a-btn">Подробнее</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% endblock %}
